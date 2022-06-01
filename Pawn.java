@@ -57,7 +57,7 @@ public class Pawn extends ChessPiece implements Piece{
                         break;
                     }
                     else if (input.toLowerCase().equals("knight")){
-                        //ChessBoard.board[xCoord][yCoord] = new Knight(xCoord, yCoord,'w');
+                        ChessBoard.board[xCoord][yCoord] = new Knight(xCoord, yCoord,'w');
                         break;
                     }
                     else if (input.toLowerCase().equals("rook")){
@@ -82,7 +82,7 @@ public class Pawn extends ChessPiece implements Piece{
                         break;
                     }
                     else if (input.toLowerCase().equals("knight")){
-                        //ChessBoard.board[xCoord][yCoord] = new Knight(xCoord, yCoord,'b');
+                        ChessBoard.board[xCoord][yCoord] = new Knight(xCoord, yCoord,'b');
                         break;
                     }
                     else if (input.toLowerCase().equals("rook")){
