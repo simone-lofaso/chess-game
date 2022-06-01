@@ -14,7 +14,7 @@ public class Pawn extends ChessPiece implements Piece{
     }
     public ArrayList<String> checkMoves(){ //will only check the selected pawn. Up to user to select which pawn. Not checking if move is possible with bounds because promotion() will run if the peice reaches the edge
         possibleMoves = new ArrayList<String>();
-        //black
+        //black                                                                                                                //think color == 'b' needs to be removed
         if (xCoord == 1 && (ChessBoard.board[xCoord][yCoord + 1] != null) && (ChessBoard.board[xCoord][yCoord + 2] != null) && color == 'b');{ //pawns can move two at start, so checking their x to see if they moved
             possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 2) + ",");                                          //check forward two spaces to see if they are empty
         }
