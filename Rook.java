@@ -13,11 +13,11 @@ public class Rook extends ChessPiece implements Piece{
     }
     public ArrayList<String> checkMoves(){ //will only check the selected rook
         possibleMoves = new ArrayList<String>();
+        int i = 1;
         while (true){ //west moves
-            int i = 0;
             if (((xCoord - i) >= 0) && ChessBoard.board[xCoord - i][yCoord] == null) {
                 possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord) + ",");
-                i += 1;
+                i++;
             }  
             if  (((xCoord - i) >= 0) && ChessBoard.board[xCoord - i][yCoord].getColor() == color){ //same color peice blocks movement
                 break;
@@ -27,11 +27,11 @@ public class Rook extends ChessPiece implements Piece{
             }
             break;
         }
+        i = 1;
         while (true){ //east moves
-            int i = 0;
             if (((xCoord + i) < 8) && ChessBoard.board[xCoord + i][yCoord] == null) {
                 possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord) + ",");
-                i += 1;
+                i++;
             }  
             if  (((xCoord + i) < 8) && ChessBoard.board[xCoord + i][yCoord].getColor() == color){ //same color peice blocks movement
                 break;
@@ -41,11 +41,11 @@ public class Rook extends ChessPiece implements Piece{
             }
             break;
         }
+        int j = 1;
         while (true){ //north
-            int j = 0;
             if (((yCoord - j) >= 0) && ChessBoard.board[xCoord][yCoord - j] == null) {
                 possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord - j) + ",");
-                j += 1;
+                j++;
             }  
             if  (((yCoord - j) >= 0) && ChessBoard.board[xCoord][yCoord - j].getColor() == color){ //same color peice blocks movement
                 break;
@@ -55,11 +55,11 @@ public class Rook extends ChessPiece implements Piece{
             }
             break;        
         }
+        j = 1;
         while (true){ //south
-            int j = 0;
             if (((yCoord + j) < 8) && ChessBoard.board[xCoord][yCoord + j] == null) {
                 possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord + j) + ",");
-                j += 1;
+                j++;
             }  
             if  (((yCoord + j) < 8) && ChessBoard.board[xCoord][yCoord + j].getColor() == color){ //same color peice blocks movement
                 break;

@@ -13,7 +13,7 @@ public class King implements Piece {
     }
     public ArrayList<String> checkMoves(){ //checks to see possible moves. Will use a lot of file space. Maybe only check moves when a peice is selected by the user.  User selects the location, not the object. Object is seleteced in code
         possibleMoves = new ArrayList<String>(); //May want to printmoves when checked as an option
-        //char test = ChessBoard.board[xCoord][yCoord].getColor();
+        
         if ((yCoord - 1 >= 0) && (color != ChessBoard.board[xCoord][yCoord - 1].getColor())){//south move possible          //might get nullpointerexception. check later
             possibleMoves.add( "xCoord:" + xCoord + ",yCoord: " + (yCoord - 1) + ","); //I'm tempted to change xCoord to a letter as is convetional in regular chess but it might be hard to implement and not effecient
         } 
