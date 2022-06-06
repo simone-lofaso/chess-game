@@ -19,4 +19,8 @@ public class ChessPiece {
     public char getColor(){
         return color;
     }
+
+    
+
+
 }

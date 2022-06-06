@@ -11,6 +11,6 @@ public class Chess {
         
         System.out.println(ChessBoard.board[0][0]); //testing
         System.out.println("Initializing board...");
-        //System.out.println(board.toString());
+        System.out.println(ChessBoard.board.toString());
     }
 }

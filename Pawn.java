@@ -29,7 +29,7 @@ public class Pawn extends ChessPiece implements Piece{
         }
 
         //white
-        if (xCoord == 6 && (ChessBoard.board[xCoord][yCoord - 1] != null) && (ChessBoard.board[xCoord][yCoord - 2] != null) && color == 'w');{
+        if (xCoord == 6 && (ChessBoard.board[xCoord][yCoord - 1] != null) && (ChessBoard.board[xCoord][yCoord - 2] != null) && color == 'w'){
             possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 1) + ",");
         }
         if (ChessBoard.board[xCoord][yCoord - 1] != null){
