@@ -1,11 +1,13 @@
 public class ChessPiece {
     char color;
+    public static boolean WHITE_PRINT_POSSIBLE_MOVES = true;
+    public static boolean BLACK_PRINT_POSSIBLE_MOVES = true;
     /**Move 
      * 
      * @param input Location to move to. In XY unless i get unlazy and change to to conventional system (unlikely, would require a lot of work)
      * @return returns taken chess piece if any. Null otherwise. Chess.java handles null return
      */
-    public ChessPiece move(String input){ //Might need another input for color. Shouldn't be run by the user so it shouldnt be a problem
+    public ChessPiece move(String input, char color2){ //Might need another input for color. Shouldn't be run by the user so it shouldnt be a problem
         
         //read in user input for move
         //check if move is valid

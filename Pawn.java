@@ -102,10 +102,8 @@ public class Pawn extends ChessPiece implements Piece{
         }
     }
 
-    public String toString(ChessPiece piece){
-        String s = "";
-        s = "P" + color;
-
-        return s;
+    @Override
+    public String toString(){
+        return " P" + color;
     }
 }

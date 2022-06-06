@@ -86,10 +86,8 @@ public class Bishop extends ChessPiece implements Piece{
     }
 
     
-    public String toString(ChessPiece piece){
-        String s = "";
-        s = "B" + color;
-
-        return s;
+    @Override
+    public String toString(){
+        return " B" + color;
     }
 }

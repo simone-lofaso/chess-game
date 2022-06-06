@@ -75,6 +75,6 @@ public class Rook extends ChessPiece implements Piece{
     
     @Override
     public String toString(){ //y no work
-        return "R" + color;
+        return " R" + color;
     }
 }

@@ -42,10 +42,8 @@ public class King extends ChessPiece implements Piece {
         return possibleMoves;
     }
     
-    public String toString(ChessPiece piece){
-        String s = "";
-        s = "K" + color;
-
-        return s;
+    @Override
+    public String toString(){
+        return " K" + color;
     }
 }

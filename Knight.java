@@ -41,10 +41,8 @@ public class Knight extends ChessPiece implements Piece{
         return possibleMoves;
     }
     
-    public String toString(ChessPiece piece){
-        String s = "";
-        s = "Kn" + color;
-
-        return s;
+    @Override
+    public String toString(){
+        return "KN" + color;
     }
 }

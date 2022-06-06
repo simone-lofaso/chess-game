@@ -141,10 +141,8 @@ public class Queen extends ChessPiece implements Piece {
         return possibleMoves;
     }
 
-    public String toString(ChessPiece piece){
-        String s = "";
-        s = "Q" + color;
-
-        return s;
+    @Override
+    public String toString(){
+        return " Q" + color;
     }
 }
