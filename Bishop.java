@@ -39,7 +39,7 @@ public class Bishop extends ChessPiece implements Piece{
                 i++;
                 j++;
             }
-            if ((xCoord + i < 8) && (yCoord - j >= 0) && ChessBoard.board[xCoord + i][yCoord - j].getColor() == color){ \
+            if ((xCoord + i < 8) && (yCoord - j >= 0) && ChessBoard.board[xCoord + i][yCoord - j].getColor() == color){ 
                 break;
             }
             else if ((xCoord + i < 8) && (yCoord - j >= 0) && ChessBoard.board[xCoord + i][yCoord - j].getColor() != color){
@@ -83,5 +83,13 @@ public class Bishop extends ChessPiece implements Piece{
 
         }  
         return possibleMoves;
+    }
+
+    
+    public String toString(ChessPiece piece){
+        String s = "";
+        s = "B" + color;
+
+        return s;
     }
 }

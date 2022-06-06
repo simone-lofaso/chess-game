@@ -53,7 +53,7 @@ public class Pawn extends ChessPiece implements Piece{
                 String input = in.nextLine();
                 while (true){
                     if (input.toLowerCase().equals("queen")){
-                        //ChessBoard.board[xCoord][yCoord] = new Queen(xCoord, yCoord,'w');
+                        ChessBoard.board[xCoord][yCoord] = new Queen(xCoord, yCoord,'w');
                         break;
                     }
                     else if (input.toLowerCase().equals("knight")){
@@ -65,7 +65,7 @@ public class Pawn extends ChessPiece implements Piece{
                         break;
                     }
                     else if (input.toLowerCase().equals("bishop")){
-                        //ChessBoard.board[xCoord][yCoord] = new Bishop(xCoord, yCoord,'w');
+                        ChessBoard.board[xCoord][yCoord] = new Bishop(xCoord, yCoord,'w');
                         break;
                     }
                     else{
@@ -78,7 +78,7 @@ public class Pawn extends ChessPiece implements Piece{
                 String input = in.nextLine();
                 while (true){
                     if (input.toLowerCase().equals("queen")){
-                        //ChessBoard.board[xCoord][yCoord] = new Queen(xCoord, yCoord,'b');
+                        ChessBoard.board[xCoord][yCoord] = new Queen(xCoord, yCoord,'b');
                         break;
                     }
                     else if (input.toLowerCase().equals("knight")){
@@ -90,7 +90,7 @@ public class Pawn extends ChessPiece implements Piece{
                         break;
                     }
                     else if (input.toLowerCase().equals("bishop")){
-                        //ChessBoard.board[xCoord][yCoord] = new Bishop(xCoord, yCoord,'b');
+                        ChessBoard.board[xCoord][yCoord] = new Bishop(xCoord, yCoord,'b');
                         break;
                     }
                     else{
@@ -100,5 +100,12 @@ public class Pawn extends ChessPiece implements Piece{
             }
         in.close();
         }
+    }
+
+    public String toString(ChessPiece piece){
+        String s = "";
+        s = "P" + color;
+
+        return s;
     }
 }

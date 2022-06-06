@@ -72,4 +72,9 @@ public class Rook extends ChessPiece implements Piece{
         //maybe add castling here too
         return possibleMoves;
     }
+    
+    @Override
+    public String toString(Rook piece){ //y no work
+        return "R" + color;
+    }
 }

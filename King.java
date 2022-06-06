@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-public class King implements Piece {
+public class King extends ChessPiece implements Piece {
     private int xCoord; //manual tracking of position
     private int yCoord;
     private char color; //stores color in a character. Not using string here since i don't really see a need to. b for black, c for white
@@ -40,5 +40,12 @@ public class King implements Piece {
         } //thinking for more complicated peices you can loop if it can move a distance
         //maybe add castling? Should designate castling in prompt for move. 
         return possibleMoves;
+    }
+    
+    public String toString(ChessPiece piece){
+        String s = "";
+        s = "K" + color;
+
+        return s;
     }
 }
