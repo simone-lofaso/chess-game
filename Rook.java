@@ -16,56 +16,56 @@ public class Rook extends ChessPiece implements Piece{
         int i = 1;
         while (true){ //west moves
             if (((xCoord - i) >= 0) && ChessBoard.board[xCoord - i][yCoord] == null) {
-                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord) + ",");
+                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord));
                 i++;
             }  
             if  (((xCoord - i) >= 0) && ChessBoard.board[xCoord - i][yCoord].getColor() == color){ //same color peice blocks movement
                 break;
             }
             else if  (((xCoord - i) >= 0) && ChessBoard.board[xCoord - i][yCoord].getColor() != color){//different color, take move DOUBLE CHECK!!!!
-                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord) + ",");
+                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord));
             }
             break;
         }
         i = 1;
         while (true){ //east moves
             if (((xCoord + i) < 8) && ChessBoard.board[xCoord + i][yCoord] == null) {
-                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord) + ",");
+                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord));
                 i++;
             }  
             if  (((xCoord + i) < 8) && ChessBoard.board[xCoord + i][yCoord].getColor() == color){ //same color peice blocks movement
                 break;
             }
             else if  (((xCoord + i) < 8) && ChessBoard.board[xCoord + i][yCoord].getColor() != color){//different color, take move DOUBLE CHECK!!!!
-                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord) + ",");
+                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord));
             }
             break;
         }
         int j = 1;
         while (true){ //north
             if (((yCoord - j) >= 0) && ChessBoard.board[xCoord][yCoord - j] == null) {
-                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord - j) + ",");
+                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord - j));
                 j++;
             }  
             if  (((yCoord - j) >= 0) && ChessBoard.board[xCoord][yCoord - j].getColor() == color){ //same color peice blocks movement
                 break;
             }
             else if  (((yCoord - j) >= 0) && ChessBoard.board[xCoord][yCoord - j].getColor() != color){//different color, take move DOUBLE CHECK!!!!
-                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord - j) + ",");
+                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord - j));
             }
             break;        
         }
         j = 1;
         while (true){ //south
             if (((yCoord + j) < 8) && ChessBoard.board[xCoord][yCoord + j] == null) {
-                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord + j) + ",");
+                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord + j));
                 j++;
             }  
             if  (((yCoord + j) < 8) && ChessBoard.board[xCoord][yCoord + j].getColor() == color){ //same color peice blocks movement
                 break;
             }
             else if  (((yCoord - j) < 8 ) && ChessBoard.board[xCoord][yCoord + j].getColor() != color){//different color, take move DOUBLE CHECK!!!!
-                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord + j) + ",");
+                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord + j));
             }
             break;        
         }
@@ -76,5 +76,9 @@ public class Rook extends ChessPiece implements Piece{
     @Override
     public String toString(){ //y no work
         return " R" + color;
+    }
+
+    public char getColor(){
+        return color; 
     }
 }

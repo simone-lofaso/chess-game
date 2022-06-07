@@ -15,28 +15,28 @@ public class King extends ChessPiece implements Piece {
         possibleMoves = new ArrayList<String>(); //May want to printmoves when checked as an option
         
         if ((yCoord - 1 >= 0) && (color != ChessBoard.board[xCoord][yCoord - 1].getColor())){//south move possible          //might get nullpointerexception. check later
-            possibleMoves.add( "xCoord:" + xCoord + ",yCoord: " + (yCoord - 1) + ","); //I'm tempted to change xCoord to a letter as is convetional in regular chess but it might be hard to implement and not effecient
+            possibleMoves.add( "xCoord:" + xCoord + ",yCoord: " + (yCoord - 1)); //I'm tempted to change xCoord to a letter as is convetional in regular chess but it might be hard to implement and not effecient
         } 
         if ((yCoord + 1 < 8) && (color != ChessBoard.board[xCoord][yCoord + 1].getColor())){ //north move possible
-            possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 1) + ",");
+            possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 1));
         } 
         if ((xCoord + 1 < 8) && (color != ChessBoard.board[xCoord + 1][yCoord].getColor())){ //east move possible  //relable north and south
-            possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + yCoord + ",");
+            possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + yCoord);
         }
         if ((xCoord - 1 >= 0) && (color != ChessBoard.board[xCoord - 1][yCoord].getColor())){ //west move possible
-            possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + yCoord + ",");
+            possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + yCoord);
         }
         if ((xCoord + 1 < 8)  && (yCoord + 1 < 8) && (color != ChessBoard.board[xCoord + 1][yCoord].getColor())){ //northeast move possible
-            possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord + 1) + ",");
+            possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord + 1));
         }
         if ((xCoord - 1 >= 0)  && (yCoord + 1 < 8) && (color != ChessBoard.board[xCoord + 1][yCoord].getColor())){ //northwest move possible
-            possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord + 1) + ",");
+            possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord + 1));
         }
         if ((xCoord + 1 < 8)  && (yCoord - 1 >= 0) && (color != ChessBoard.board[xCoord + 1][yCoord].getColor())){ //southeast move possible
-            possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord - 1) + ",");
+            possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord - 1));
         }
         if ((xCoord - 1 >= 0)  && (yCoord - 1 >= 0) && (color != ChessBoard.board[xCoord + 1][yCoord].getColor())){ //southwest move possible
-            possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord - 1) + ",");
+            possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord - 1));
         } //thinking for more complicated peices you can loop if it can move a distance
         //maybe add castling? Should designate castling in prompt for move. 
         return possibleMoves;
@@ -45,5 +45,8 @@ public class King extends ChessPiece implements Piece {
     @Override
     public String toString(){
         return " K" + color;
+    }
+    public char getColor(){
+        return color; 
     }
 }

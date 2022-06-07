@@ -16,30 +16,30 @@ public class Pawn extends ChessPiece implements Piece{
         possibleMoves = new ArrayList<String>();
         //black                                                                                                                //think color == 'b' needs to be removed
         if (xCoord == 1 && (ChessBoard.board[xCoord][yCoord + 1] != null) && (ChessBoard.board[xCoord][yCoord + 2] != null) && color == 'b');{ //pawns can move two at start, so checking their x to see if they moved
-            possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 2) + ",");                                          //check forward two spaces to see if they are empty
+            possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 2));                                          //check forward two spaces to see if they are empty
         }
-        if (ChessBoard.board[xCoord][yCoord + 1] != null){ //normal move
-            possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 1) + ","); 
+        if (ChessBoard.board[xCoord][yCoord + 1] != null  && color == 'b'){ //normal move
+            possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 1)); 
         }
-        if (ChessBoard.board[xCoord + 1][yCoord + 1] != null && ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != color){ //take moving move east. Taking will take place in move()
-            possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord + 1) + ","); 
+        if (ChessBoard.board[xCoord + 1][yCoord + 1] != null && ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'w'  && color == 'b'){ //take moving move east. Taking will take place in move()
+            possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord + 1)); 
         }
-        if (ChessBoard.board[xCoord + - 1][yCoord + 1] != null && ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != color){ //take moving west
-            possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord + 1) + ","); 
+        if (ChessBoard.board[xCoord + - 1][yCoord + 1] != null && ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'w'  && color == 'b'){ //take moving west
+            possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord + 1)); 
         }
 
         //white
         if (xCoord == 6 && (ChessBoard.board[xCoord][yCoord - 1] != null) && (ChessBoard.board[xCoord][yCoord - 2] != null) && color == 'w'){
-            possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 1) + ",");
+            possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 1));
         }
         if (ChessBoard.board[xCoord][yCoord - 1] != null){
-            possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord - 1) + ",");
+            possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord - 1));
         }
-        if (ChessBoard.board[xCoord + 1][yCoord - 1] != null && ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != color){ //take moving east
-            possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord - 1) + ","); 
+        if (ChessBoard.board[xCoord + 1][yCoord - 1] != null && ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'b'  && color == 'w'){ //take moving east
+            possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord - 1)); 
         }
-        if (ChessBoard.board[xCoord - 1][yCoord - 1] != null && ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != color){ //take moving west
-            possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord - 1) + ","); 
+        if (ChessBoard.board[xCoord - 1][yCoord - 1] != null && ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'b'  && color == 'w'){ //take moving west
+            possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord - 1)); 
         }
 
         return possibleMoves;
@@ -105,5 +105,9 @@ public class Pawn extends ChessPiece implements Piece{
     @Override
     public String toString(){
         return " P" + color;
+    }
+
+    public char getColor(){
+        return color; 
     }
 }

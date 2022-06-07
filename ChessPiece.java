@@ -1,7 +1,13 @@
+import java.util.ArrayList;
+
 public class ChessPiece {
-    char color;
+
     public static boolean WHITE_PRINT_POSSIBLE_MOVES = true;
     public static boolean BLACK_PRINT_POSSIBLE_MOVES = true;
+
+    private char color; 
+
+
     /**Move 
      * 
      * @param input Location to move to. In XY unless i get unlazy and change to to conventional system (unlikely, would require a lot of work)
@@ -18,10 +24,16 @@ public class ChessPiece {
 
         return null; 
     }
-    public char getColor(){
-        return color;
+    public char getColor(){ //This will never be called, but it needs to exist. Idk why
+        return 'f';
     }
 
+    public ArrayList<String> checkMoves(){
+        return new ArrayList<String>();
+    }
+
+
+    
     
 
 

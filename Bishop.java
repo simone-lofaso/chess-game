@@ -18,7 +18,7 @@ public class Bishop extends ChessPiece implements Piece{
             int i = 1; //horizontal
             int j = 1; // vertical
             if ((xCoord - i >= 0) && (yCoord - j >= 0) && ChessBoard.board[xCoord - i][yCoord - j] == null){
-                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord - j) + ",");
+                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord - j));
                 i++;
                 j++;
             }
@@ -35,7 +35,7 @@ public class Bishop extends ChessPiece implements Piece{
             int i = 1; 
             int j = 1; 
             if ((xCoord + i < 8) && (yCoord - j >= 0) && ChessBoard.board[xCoord + i][yCoord - j] == null){
-                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord - j) + ",");
+                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord - j));
                 i++;
                 j++;
             }
@@ -52,7 +52,7 @@ public class Bishop extends ChessPiece implements Piece{
             int i = 1; 
             int j = 1; 
             if ((xCoord + i < 8) && (yCoord + j < 8 ) && ChessBoard.board[xCoord + i][yCoord + j] == null){
-                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord + j) + ",");
+                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord + j));
                 i++;
                 j++;
             }
@@ -69,7 +69,7 @@ public class Bishop extends ChessPiece implements Piece{
             int i = 1; 
             int j = 1; 
             if ((xCoord - i >= 0) && (yCoord + j < 8 ) && ChessBoard.board[xCoord - i][yCoord + j] == null){
-                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord + j) + ",");
+                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord + j));
                 i++;
                 j++;
             }
@@ -84,10 +84,13 @@ public class Bishop extends ChessPiece implements Piece{
         }  
         return possibleMoves;
     }
-
+    public char getColor(){
+        return color; 
+    }
     
     @Override
     public String toString(){
         return " B" + color;
     }
+    
 }
