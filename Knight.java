@@ -14,11 +14,15 @@ public class Knight extends ChessPiece implements Piece{
 
     public ArrayList<String> checkMoves(){
         possibleMoves = new ArrayList<String>();
-        if(xCoord - 2 >= 0 && yCoord + 1 < 8 && ChessBoard.board[xCoord -2][yCoord + 1].getColor() !=color){
-            possibleMoves.add("xCoord:" + (xCoord - 2) + ",yCoord: " + (yCoord + 1));
+        if(xCoord - 2 >= 0 && yCoord + 1 < 8){
+            if (ChessBoard.board[xCoord -2][yCoord + 1].getColor() !=color || ChessBoard.board[xCoord - 2][yCoord + 1] == null){
+                possibleMoves.add("xCoord:" + (xCoord - 2) + ",yCoord: " + (yCoord + 1));
+            }
         }
-        if(xCoord - 2 >= 0 && yCoord - 1 >=0 && ChessBoard.board[xCoord -2][yCoord - 1].getColor()!=color){
-            possibleMoves.add("xCoord:" + (xCoord - 2) + ",yCoord: " + (yCoord - 1));
+        if(xCoord - 2 >= 0 && yCoord - 1 >=0){
+            if (ChessBoard.board[xCoord -2][yCoord - 1].getColor()!=color || ChessBoard.board[xCoord - 2][yCoord + 1] == null){
+                possibleMoves.add("xCoord:" + (xCoord - 2) + ",yCoord: " + (yCoord - 1));
+            }
         }
         if(xCoord - 1 >= 0 && yCoord + 2 < 8 && ChessBoard.board[xCoord - 1][yCoord + 2].getColor()!=color){
             possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord + 2));

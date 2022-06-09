@@ -21,11 +21,16 @@ public class Pawn extends ChessPiece implements Piece{
             if (ChessBoard.board[xCoord][yCoord + 1] != null  && color == 'b'){ //normal move
                 possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 1)); 
             }
-            if (ChessBoard.board[xCoord + 1][yCoord + 1] != null && ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'w'){ //take moving move east. Taking will take place in move()
-                possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord + 1)); 
+            if (ChessBoard.board[xCoord + 1][yCoord + 1] != null){ //take moving move east. Taking will take place in move()
+                if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'w'){
+                    possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord + 1)); 
+                }
+                
             }
-            if (ChessBoard.board[xCoord + - 1][yCoord + 1] != null && ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'w'){ //take moving west
-                possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord + 1)); 
+            if (ChessBoard.board[xCoord + - 1][yCoord + 1] != null){ //take moving west
+                if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'w'){
+                    possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord + 1)); 
+                }
             }
         }                                                                                                              //think color == 'b' needs to be removed
         else if (color == 'w'){
@@ -35,11 +40,19 @@ public class Pawn extends ChessPiece implements Piece{
             if (ChessBoard.board[xCoord][yCoord - 1] != null){
                 possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord - 1));
             }
-            if (ChessBoard.board[xCoord + 1][yCoord - 1] != null && ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'b'){ //take moving east
-                possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord - 1)); 
+            if (xCoord + 1 < 8){ //take moving east
+                if (ChessBoard.board[xCoord + 1][yCoord - 1] != null){
+                    if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'b'){
+                        possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord - 1)); 
+                    }
+                }
             }
-            if (ChessBoard.board[xCoord - 1][yCoord - 1] != null && ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'b'){ //take moving west
-                possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord - 1)); 
+            if (xCoord - 1 >= 0){
+                if (ChessBoard.board[xCoord - 1][yCoord - 1] != null){ //take moving west
+                    if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'b'){
+                        possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord - 1)); 
+                    }
+                }
             }
         }
         
