@@ -14,8 +14,8 @@ public class Queen extends ChessPiece implements Piece {
      * @param y Starting y Coordinate
      * @param color Queen color 
      */
-    public Queen(int x, int y, char color2){
-        color = color2;
+    public Queen(int x, int y, char color){
+        this.color = color;
         xCoord = x;
         yCoord = y;
     }

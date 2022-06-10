@@ -6,11 +6,6 @@ public class Bishop extends ChessPiece implements Piece{
 
     public ArrayList<String> possibleMoves;
 
-    public Bishop(int x, int y, char color2){
-        color = color2;
-        xCoord = x;
-        yCoord = y;
-    }
     /**
      * Bishop object initializer. X and Y coordinates will be updated as the Bishop is moved. Does not contain error checking as it is never used by the user.
      * 
@@ -18,6 +13,12 @@ public class Bishop extends ChessPiece implements Piece{
      * @param y Starting y Coordinate
      * @param color Bishop color 
      */
+    public Bishop(int x, int y, char color){
+        this.color = color;
+        xCoord = x;
+        yCoord = y;
+    }
+    
     public ArrayList<String> checkMoves(){
         possibleMoves = new ArrayList<String>();
         while (true){ //northwest

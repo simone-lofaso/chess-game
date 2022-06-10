@@ -13,8 +13,8 @@ public class Rook extends ChessPiece implements Piece{
      * @param y Starting y Coordinate
      * @param color Rook color 
      */
-    public Rook(int x, int y, char color2){
-        color = color2; 
+    public Rook(int x, int y, char color){
+        this.color = color; 
         xCoord = x;
         yCoord = y;
     }

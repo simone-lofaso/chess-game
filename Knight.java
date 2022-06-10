@@ -13,8 +13,8 @@ public class Knight extends ChessPiece implements Piece{
      * @param y Starting y Coordinate
      * @param color Knight color 
      */
-    public Knight(int x, int y, char color2){
-        color = color2;
+    public Knight(int x, int y, char color){
+        this.color = color;
         xCoord = x;
         yCoord = y;
     }

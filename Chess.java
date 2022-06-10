@@ -8,10 +8,10 @@ public class Chess {
 
     public static void main(String[] args) {
 
-        ChessPiece[][] board = ChessBoard.createBoard();
+        ChessPiece[][] board = ChessBoard.createBoard(); 
         Scanner in = new Scanner(System.in);
         
-        System.out.println("Initializing board...");
+        System.out.println("Initializing board..."); //FIX LOSING TURN IF CHANGING PEICES TO MOVE WITH Q
         ChessBoard.visualize(board);
         System.out.println("Board initialized."); //yes im doing this because it makes me feel like im launching a rocket.
                                                     //except the rocket is my code and therefore the inhabitants are doomed
@@ -54,10 +54,12 @@ public class Chess {
 
                 if (xPos > 8 || xPos < 0){
                     System.out.println("X position is not within the bounds of the board. Choose a number from 0 to 7.");
+                    continue;
 
                 }
                 else if (yPos > 8 || yPos < 0){
-                    System.out.println("Y position is not within the bounds of the board. Choose a number from 0 to 7."); 
+                    System.out.println("Y position is not within the bounds of the board. Choose a number from 0 to 7.");
+                    continue; 
                 }
                 else if (board[xPos][yPos] == null){
                     System.out.println("There is no piece there.");
@@ -65,6 +67,7 @@ public class Chess {
                 }
                 else if (board[xPos][yPos].getColor() != 'w' ){
                     System.out.println("This isn't your piece. Choose a white piece.");
+                    continue;
                 }
                 else{
                     while (true){//move loop
@@ -124,16 +127,20 @@ public class Chess {
 
                 if (xPos > 8 || xPos < 0){
                     System.out.println("X position is not within the bounds of the board. Choose a number from 0 to 7.");
+                    continue;
 
                 }
                 else if (yPos > 8 || yPos < 0){
                     System.out.println("Y position is not within the bounds of the board. Choose a number from 0 to 7."); 
+                    continue;
                 }
                 else if (board[xPos][yPos] == null){
                     System.out.println("There is no piece there.");
+                    continue;
                 }
                 else if (board[xPos][yPos].getColor() != 'b' ){
                     System.out.println("This isn't your piece. Choose a black piece.");
+                    continue;
                 }
                 else{
                     while (true){//move loop
