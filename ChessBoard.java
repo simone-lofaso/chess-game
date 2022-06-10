@@ -13,7 +13,7 @@ public class ChessBoard {
         return board;
     }
     /**
-     * Creates the starting board in the standard layout.
+     * Populates the starting board in the standard layout.
      * 
      */
     public static void populate(){
@@ -54,7 +54,11 @@ public class ChessBoard {
         board[7][6] = new Pawn(7, 6, 'w');
     }
 
-    
+    /**
+     * Prints the chessboard to console
+     * 
+     * @param chessboard The 2d array of type ChessPiece to be printed
+     */
     public static void visualize(ChessPiece[][] chessboard ){ 
         System.out.println("   ---------------------------------");    
         for (int i = 0; i < 8; i++){ 

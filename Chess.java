@@ -72,7 +72,7 @@ public class Chess {
                 else{
                     while (true){//move loop
                         System.out.println("Choose a place to move the piece to. Input is as follows: xCoord, yCoord. Ex; 0, 1. Q to select a different piece");
-                            //Add possible moves here is WHITE_PRINT_POSSIBLE_MOVES is on. same for black
+                            
                             if (ChessPiece.WHITE_PRINT_POSSIBLE_MOVES){
                                 ArrayList<String> possibleMovesWhite = board[xPos][yPos].checkMoves();
                                 System.out.println(possibleMovesWhite);
@@ -82,7 +82,11 @@ public class Chess {
                             int yCoord;
                             if (!in.hasNextInt()){
                                 if (in.nextLine().toLowerCase().equals("q")){
-                                    break;
+                                    continue;
+                                }
+                                else{
+                                    System.out.println("Input not recognized. Please try again.");
+                                    continue;
                                 }
                             }
                             else{
@@ -90,16 +94,20 @@ public class Chess {
                                 yCoord = in.nextInt();
                                 if (xCoord > 8 ||xCoord< 0){
                                     System.out.println("The given X Position is not within the bounds of the board. Please try again.");
-                                    continue; //may not be needed but keeping it here for now
+                                    continue; 
                                 }
                                 else if (yCoord > 8 || yCoord < 0){
                                     System.out.println("The given Y Position is not within the bounds of the board. Please try again.");
                                     continue;
                                 }
+                                else if (xCoord == xPos && yCoord == yPos){
+                                    System.out.println("That is the same position. Please choose another place to move to.");
+                                    continue;
+                                }
                                 else{
                                     String location = "xCoord: " + xCoord + ",yCoord: " + yCoord;
                                     ChessPiece piece = board[xPos][yPos];
-                                    ArrayList<String> moves = piece.checkMoves(); //Seems to call right checkMoves. 
+                                    ArrayList<String> moves = piece.checkMoves(); 
                                     if (moves.indexOf(location) != -1){
                                         if (board[xCoord][yCoord] != null){
                                             whiteTook.add(board[xCoord][yCoord]);
@@ -108,6 +116,10 @@ public class Chess {
                                         piece.setX(xCoord);
                                         piece.setY(yCoord);
                                         board[xPos][yPos] = null;
+
+                                        if (board[xPos][yPos] instanceof Pawn){
+                                            board[xPos][yPos].promotion();
+                                        }
                                         ChessBoard.visualize(board);
                                         break;
                                     }
@@ -154,7 +166,11 @@ public class Chess {
                             int yCoord;
                             if (!in.hasNextInt()){
                                 if (in.nextLine().toLowerCase().equals("q")){
-                                    break;
+                                    continue;
+                                }
+                                else{
+                                    System.out.println("Input not recognized. Please try again.");
+                                    continue;
                                 }
                             }
                             else{
@@ -162,16 +178,20 @@ public class Chess {
                                 yCoord = in.nextInt();
                                 if (xCoord > 8 ||xCoord< 0){
                                     System.out.println("The given X Position is not within the bounds of the board. Please try again.");
-                                    continue; //may not be needed but keeping it here for now
+                                    continue; 
                                 }
                                 else if (yCoord > 8 || yCoord < 0){
                                     System.out.println("The given Y Position is not within the bounds of the board. Please try again.");
                                     continue;
                                 }
+                                else if (xCoord == xPos && yCoord == yPos){
+                                    System.out.println("That is the same position. Please choose another place to move to.");
+                                    continue;
+                                }
                                 else{
                                     String location = "xCoord: " + xCoord + ",yCoord: " + yCoord;
                                     ChessPiece piece = board[xPos][yPos];
-                                    ArrayList<String> moves = piece.checkMoves(); //Seems to call right checkMoves. 
+                                    ArrayList<String> moves = piece.checkMoves();
                                     if (moves.indexOf(location) != -1){
                                         if (board[xCoord][yCoord] != null){
                                             blackTook.add(board[xCoord][yCoord]);
@@ -180,6 +200,10 @@ public class Chess {
                                         piece.setX(xCoord);
                                         piece.setY(yCoord);
                                         board[xPos][yPos] = null;
+                                        if (board[xPos][yPos] instanceof Pawn){
+                                            board[xPos][yPos].promotion();
+                                        }
+                                        
                                         ChessBoard.visualize(board);
                                         break;
                                     }

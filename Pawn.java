@@ -77,8 +77,12 @@ public class Pawn extends ChessPiece implements Piece{
 
         return possibleMoves;
     }
+    /**
+     * Used to promote a pawn to a Queen, Knight, Rook, or Bishop. 
+     * 
+     */
     public void promotion(){ //will call on every pawn move.    
-                             //prompt user to promote to a queen, knight, rook, or bishop. Then convert pawn to it. Can probably create new piece and replace it over the pawn
+                            
         if ((xCoord == 0 && color == 'w') || (xCoord == 7 && color == 'b')){
             Scanner in = new Scanner(System.in);
             if (color == 'w'){ //separated by color to avoid further nesting

@@ -23,6 +23,7 @@ public class Knight extends ChessPiece implements Piece{
      * 
      * @return ArrayList type String containing all possible moves in format "xCoord: x, yCoord: y"
      */
+    //Fixed but untested
     public ArrayList<String> checkMoves(){
         possibleMoves = new ArrayList<String>();
         if(xCoord - 2 >= 0 && yCoord + 1 < 8){

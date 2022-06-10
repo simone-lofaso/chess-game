@@ -24,33 +24,73 @@ public class King extends ChessPiece implements Piece {
      * @return ArrayList type String containing all possible moves in format "xCoord: x, yCoord: y"
      */
 
-     //Needs null checking before getColor() is ran. Should just be able to nest the current constraint in a null check.
+    //Not checked.
     public ArrayList<String> checkMoves(){ 
         possibleMoves = new ArrayList<String>(); 
         
-        if ((yCoord - 1 >= 0) && (color != ChessBoard.board[xCoord][yCoord - 1].getColor())){//north move possible          
-            possibleMoves.add( "xCoord:" + xCoord + ",yCoord: " + (yCoord - 1));
+        if (yCoord - 1 >= 0){//north move possible          
+            if (ChessBoard.board[xCoord][yCoord - 1] == null){
+                possibleMoves.add( "xCoord:" + xCoord + ",yCoord: " + (yCoord - 1));
+            }
+            else if (ChessBoard.board[xCoord][yCoord - 1].getColor() != color){
+                possibleMoves.add( "xCoord:" + xCoord + ",yCoord: " + (yCoord - 1));
+            }
         } 
-        if ((yCoord + 1 < 8) && (color != ChessBoard.board[xCoord][yCoord + 1].getColor())){ //south move possible
-            possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 1));
+        if (yCoord + 1 < 8){ //south move possible
+            if (ChessBoard.board[xCoord][yCoord + 1] == null){
+                possibleMoves.add( "xCoord:" + xCoord + ",yCoord: " + (yCoord + 1));
+            }
+            else if (ChessBoard.board[xCoord][yCoord - 1].getColor() != color){
+                possibleMoves.add( "xCoord:" + xCoord + ",yCoord: " + (yCoord + 1));
+            }
         } 
-        if ((xCoord + 1 < 8) && (color != ChessBoard.board[xCoord + 1][yCoord].getColor())){ //east move possible
-            possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + yCoord);
+        if (xCoord + 1 < 8){ //east move possible
+            if (ChessBoard.board[xCoord + 1][yCoord] == null){
+                possibleMoves.add( "xCoord:" + (xCoord + 1) + ",yCoord: " + yCoord);
+            }
+            else if (ChessBoard.board[xCoord + 1][yCoord].getColor() != color){
+                possibleMoves.add( "xCoord:" + (xCoord + 1) + ",yCoord: " + yCoord);
+            }
         }
-        if ((xCoord - 1 >= 0) && (color != ChessBoard.board[xCoord - 1][yCoord].getColor())){ //west move possible
-            possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + yCoord);
+        if (xCoord - 1 >= 0){ //west move possible
+            if (ChessBoard.board[xCoord + 1][yCoord] == null){
+                possibleMoves.add( "xCoord:" + (xCoord - 1) + ",yCoord: " + yCoord);
+            }
+            else if (ChessBoard.board[xCoord + 1][yCoord].getColor() != color){
+                possibleMoves.add( "xCoord:" + (xCoord + 1) + ",yCoord: " + yCoord);
+            }
         }
-        if ((xCoord + 1 < 8)  && (yCoord + 1 < 8) && (color != ChessBoard.board[xCoord + 1][yCoord].getColor())){ //southeast move possible
-            possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord + 1));
+        if ((xCoord + 1 < 8)  && (yCoord + 1 < 8)){ //southeast move possible
+            if (ChessBoard.board[xCoord + 1][yCoord  + 1] == null){
+                possibleMoves.add( "xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord + 1));
+            }
+            else if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != color){
+                possibleMoves.add( "xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord + 1));
+            }
         }
-        if ((xCoord - 1 >= 0)  && (yCoord + 1 < 8) && (color != ChessBoard.board[xCoord + 1][yCoord].getColor())){ //southwest move possible
-            possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord + 1));
+        if ((xCoord - 1 >= 0)  && (yCoord + 1 < 8)){ //southwest move possible
+            if (ChessBoard.board[xCoord - 1][yCoord  + 1] == null){
+                possibleMoves.add( "xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord + 1));
+            }
+            else if (ChessBoard.board[xCoord - 1][yCoord + 1].getColor() != color){
+                possibleMoves.add( "xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord + 1));
+            }
         }
-        if ((xCoord + 1 < 8)  && (yCoord - 1 >= 0) && (color != ChessBoard.board[xCoord + 1][yCoord].getColor())){ //northeast move possible
-            possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord - 1));
+        if ((xCoord + 1 < 8)  && (yCoord - 1 >= 0)){ //northeast move possible
+            if (ChessBoard.board[xCoord + 1][yCoord  - 1] == null){
+                possibleMoves.add( "xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord - 1));
+            }
+            else if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != color){
+                possibleMoves.add( "xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord - 1));
+            }
         }
-        if ((xCoord - 1 >= 0)  && (yCoord - 1 >= 0) && (color != ChessBoard.board[xCoord + 1][yCoord].getColor())){ //northwest move possible
-            possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord - 1));
+        if ((xCoord - 1 >= 0)  && (yCoord - 1 >= 0)){ //northwest move possible
+            if (ChessBoard.board[xCoord - 1][yCoord  - 1] == null){
+                possibleMoves.add( "xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord - 1));
+            }
+            else if (ChessBoard.board[xCoord - 1][yCoord - 1].getColor() != color){
+                possibleMoves.add( "xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord - 1));
+            }
         } 
         //maybe add castling? Should designate castling in prompt for move. 
         return possibleMoves;
