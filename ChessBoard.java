@@ -1,11 +1,21 @@
 public class ChessBoard {
     public static ChessPiece[][] board;
 
+
+    /**
+     * Creates the board 2D array.
+     * 
+     * @return 2D array of size 8x8.
+     */
     public static ChessPiece[][] createBoard(){
-        board = new ChessPiece[8][8]; //initalizes 8x8 2d array of type chessPeice
+        board = new ChessPiece[8][8]; //initializes 8x8 2d array of type chessPiece
         populate();
         return board;
     }
+    /**
+     * Creates the starting board in the standard layout.
+     * 
+     */
     public static void populate(){
         board[0][0] = new Rook(0,0,'b');
         board[1][0] = new Knight(1, 0, 'b');

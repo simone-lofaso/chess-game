@@ -5,35 +5,43 @@ public class ChessPiece {
     public static boolean WHITE_PRINT_POSSIBLE_MOVES = true;
     public static boolean BLACK_PRINT_POSSIBLE_MOVES = true;
 
-    private char color; 
+    public int xCoord;
+    public int yCoord;
 
-
-    /**Move 
+    /**
+     * Color getter. This will never be called but it is needed for the child classes to work.
      * 
-     * @param input Location to move to. In XY unless i get unlazy and change to to conventional system (unlikely, would require a lot of work)
-     * @return returns taken chess piece if any. Null otherwise. Chess.java handles null return
+     * @return 'f'.
      */
-    public ChessPiece move(String input, char color2){ //Might need another input for color. Shouldn't be run by the user so it shouldnt be a problem
-        
-        //read in user input for move
-        //check if move is valid
-        //if so, do it
-        //if not, tell user they are stupid and ask for it again
-
-        //if it is pawn moving, check to see if it is valid to be promoted using promote() after move
-
-        return null; 
-    }
-    public char getColor(){ //This will never be called, but it needs to exist. Idk why
+    public char getColor(){ 
         return 'f';
     }
 
+    /**
+     * Parent method for checkMoves(). 
+     * 
+     * @return ArrayList type String containing all possible moves in format "xCoord: x, yCoord: y"
+     */
     public ArrayList<String> checkMoves(){
         return new ArrayList<String>();
     }
+    /**
+     * X coordinate setter. Parent method for setX();
+     * 
+     * @param x The new X coordinate after the move
+     */
+    public void setX(int x){
+        xCoord = x;
+    }
 
-
-    
+    /**
+     *  Y coordinate setter. Parent method for setY();
+     * 
+     * @param y The new Y coordinate after the move
+     */
+    public void setY(int y){
+        yCoord = y;
+    }
     
 
 

@@ -6,51 +6,67 @@ public class Pawn extends ChessPiece implements Piece{
     private char color;
 
     public ArrayList<String> possibleMoves;
-
+    /**
+     * Pawn object initializer. X and Y coordinates will be updated as the Rook is moved. Does not contain error checking as it is never used by the user.
+     * 
+     * @param x Starting X coordinate
+     * @param y Starting y Coordinate
+     * @param color Rook color 
+     */
     public Pawn(int x, int y, char color2){
         color = color2;
         xCoord = x;
         yCoord = y;
     }
-    public ArrayList<String> checkMoves(){ //will only check the selected pawn. Up to user to select which pawn. Not checking if move is possible with bounds because promotion() will run if the peice reaches the edge
+    /**
+     * Checks possible moves of the selected Pawn and adds them to an ArrayList type String. Chess.java uses this to see if a user requested move is valid.
+     * 
+     * @return ArrayList type String containing all possible moves in format "xCoord: x, yCoord: y"
+     */
+    public ArrayList<String> checkMoves(){
         possibleMoves = new ArrayList<String>();
         if (color == 'b'){
-            if (xCoord == 1 && (ChessBoard.board[xCoord][yCoord + 1] != null) && (ChessBoard.board[xCoord][yCoord + 2] != null));{ //pawns can move two at start, so checking their x to see if they moved
-                possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 2));                                          //check forward two spaces to see if they are empty
+            if (xCoord == 1 && (ChessBoard.board[xCoord][yCoord + 1] == null) && (ChessBoard.board[xCoord][yCoord + 2] == null)){ //pawns can move two at start, so checking their x to see if they moved
+                possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord + 2));                                          //check forward two spaces to see if they are empty
             }
-            if (ChessBoard.board[xCoord][yCoord + 1] != null  && color == 'b'){ //normal move
-                possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 1)); 
+            if (ChessBoard.board[xCoord][yCoord + 1] == null){ //normal move
+                possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord + 1)); 
             }
-            if (ChessBoard.board[xCoord + 1][yCoord + 1] != null){ //take moving move east. Taking will take place in move()
-                if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'w'){
-                    possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord + 1)); 
-                }
+            if (xCoord + 1 < 8 && yCoord + 1 < 8){ //taking move east
+                if (ChessBoard.board[xCoord + 1][yCoord + 1] != null){ 
+                    if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'w'){
+                        possibleMoves.add("xCoord: " + (xCoord + 1) + ",yCoord: " + (yCoord + 1)); 
+                    }
+            }
+
                 
             }
-            if (ChessBoard.board[xCoord + - 1][yCoord + 1] != null){ //take moving west
-                if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'w'){
-                    possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord + 1)); 
-                }
-            }
-        }                                                                                                              //think color == 'b' needs to be removed
-        else if (color == 'w'){
-            if (xCoord == 6 && (ChessBoard.board[xCoord][yCoord - 1] != null) && (ChessBoard.board[xCoord][yCoord - 2] != null)){
-                possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord + 1));
-            }
-            if (ChessBoard.board[xCoord][yCoord - 1] != null){
-                possibleMoves.add("xCoord:" + xCoord + ",yCoord: " + (yCoord - 1));
-            }
-            if (xCoord + 1 < 8){ //take moving east
-                if (ChessBoard.board[xCoord + 1][yCoord - 1] != null){
-                    if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'b'){
-                        possibleMoves.add("xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord - 1)); 
+            if (xCoord - 1 >= 0 && yCoord + 1 < 8){
+                if (ChessBoard.board[xCoord - 1][yCoord + 1] != null){ //take moving west
+                    if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'w'){
+                        possibleMoves.add("xCoord: " + (xCoord - 1) + ",yCoord: " + (yCoord + 1)); 
                     }
                 }
             }
-            if (xCoord - 1 >= 0){
+        }                                                                                                              
+        else if (color == 'w'){
+            if (xCoord == 6 && (ChessBoard.board[xCoord][yCoord - 1] == null) && (ChessBoard.board[xCoord][yCoord - 2] == null)){
+                possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord - 2) + "AAA");
+            }
+            if (ChessBoard.board[xCoord][yCoord - 1] == null){
+                possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord - 1) + "wtf");
+            }
+            if (xCoord + 1 < 8 && yCoord - 1 >= 0){ //take moving east
+                if (ChessBoard.board[xCoord + 1][yCoord - 1] != null){
+                    if (ChessBoard.board[xCoord + 1][yCoord - 1].getColor() != 'b'){ //issue here. running when it shouldnt
+                        possibleMoves.add("xCoord: " + (xCoord + 1) + ",yCoord: " + (yCoord - 1) + "BBB"); 
+                    }
+                }
+            }
+            if (xCoord - 1 >= 0 && yCoord - 1 >= 0){
                 if (ChessBoard.board[xCoord - 1][yCoord - 1] != null){ //take moving west
-                    if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != 'b'){
-                        possibleMoves.add("xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord - 1)); 
+                    if (ChessBoard.board[xCoord - 1][yCoord - 1].getColor() != 'b' ){ 
+                        possibleMoves.add("xCoord: " + (xCoord - 1) + ",yCoord: " + (yCoord - 1) + "CC"); 
                     }
                 }
             }
@@ -124,5 +140,11 @@ public class Pawn extends ChessPiece implements Piece{
 
     public char getColor(){
         return color; 
+    }
+    public void setX(int x){
+        xCoord = x;
+    }
+    public void setY(int y){
+        yCoord = y;
     }
 }

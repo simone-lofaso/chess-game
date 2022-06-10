@@ -1,17 +1,29 @@
 import java.util.ArrayList;
 public class Rook extends ChessPiece implements Piece{
-    private int xCoord; //check King.java for comments
+    private int xCoord; 
     private int yCoord;
     private char color; 
     
     public ArrayList<String> possibleMoves;
     
+     /**
+     * Rook object initializer. X and Y coordinates will be updated as the Rook is moved. Does not contain error checking as it is never used by the user.
+     * 
+     * @param x Starting X coordinate
+     * @param y Starting y Coordinate
+     * @param color Rook color 
+     */
     public Rook(int x, int y, char color2){
         color = color2; 
         xCoord = x;
         yCoord = y;
     }
-    public ArrayList<String> checkMoves(){ //will only check the selected rook
+    /**
+     * Checks possible moves of the selected Rook and adds them to an ArrayList type String. Chess.java uses this to see if a user requested move is valid.
+     * 
+     * @return ArrayList type String containing all possible moves in format "xCoord: x, yCoord: y"
+     */
+    public ArrayList<String> checkMoves(){ 
         possibleMoves = new ArrayList<String>();
         int i = 1;
         while (true){ //west moves
@@ -72,13 +84,40 @@ public class Rook extends ChessPiece implements Piece{
         //maybe add castling here too
         return possibleMoves;
     }
-    
+    /**
+     * To String method used to print the board
+     * 
+     * @return T for "Rook" plus the color of the Rook. w for white, b for black.
+     * 
+     */
     @Override
-    public String toString(){ //y no work
+    public String toString(){ 
         return " R" + color;
     }
 
+    /**
+     * Color getter
+     * 
+     * @return The color of the designated piece.
+     */
     public char getColor(){
         return color; 
+    }
+    /**
+     * X coordinate setter
+     * 
+     * @param x The new X coordinate after the move
+     */
+    public void setX(int x){
+        xCoord = x;
+    }
+
+    /**
+     *  Y coordinate setter
+     * 
+     * @param y The new Y coordinate after the move
+     */
+    public void setY(int y){
+        yCoord = y;
     }
 }

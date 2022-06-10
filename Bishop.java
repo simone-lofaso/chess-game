@@ -11,7 +11,13 @@ public class Bishop extends ChessPiece implements Piece{
         xCoord = x;
         yCoord = y;
     }
-
+    /**
+     * Bishop object initializer. X and Y coordinates will be updated as the Bishop is moved. Does not contain error checking as it is never used by the user.
+     * 
+     * @param x Starting X coordinate
+     * @param y Starting y Coordinate
+     * @param color Bishop color 
+     */
     public ArrayList<String> checkMoves(){
         possibleMoves = new ArrayList<String>();
         while (true){ //northwest
@@ -84,13 +90,41 @@ public class Bishop extends ChessPiece implements Piece{
         }  
         return possibleMoves;
     }
-    public char getColor(){
-        return color; 
-    }
-    
+    /**
+     * To String method used to print the board
+     * 
+     * @return "B" for "Bishop" plus the color of the Bishop. w for white, b for black
+     * 
+     */
     @Override
     public String toString(){
         return " B" + color;
     }
-    
+    /**
+     * Color getter
+     * 
+     * @return The color of the designated piece.
+     */
+
+    public char getColor(){
+        return color; 
+    }
+
+    /**
+     * X coordinate setter
+     * 
+     * @param x The new X coordinate after the move
+     */
+    public void setX(int x){
+        xCoord = x;
+    }
+
+    /**
+     *  Y coordinate setter
+     * 
+     * @param y The new Y coordinate after the move
+     */
+    public void setY(int y){
+        yCoord = y;
+    }
 }
