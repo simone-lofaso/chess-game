@@ -25,65 +25,71 @@ public class Rook extends ChessPiece implements Piece{
      */
     public ArrayList<String> checkMoves(){ 
         possibleMoves = new ArrayList<String>();
-        int i = 1;
-        while (true){ //west moves
-            if (((xCoord - i) >= 0) && ChessBoard.board[xCoord - i][yCoord] == null) {
-                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord));
-                i++;
-            }  
-            if  (((xCoord - i) >= 0) && ChessBoard.board[xCoord - i][yCoord].getColor() == color){ //same color peice blocks movement
-                break;
-            }
-            else if  (((xCoord - i) >= 0) && ChessBoard.board[xCoord - i][yCoord].getColor() != color){//different color, take move DOUBLE CHECK!!!!
-                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord));
-            }
-            break;
-        }
-        i = 1;
-        while (true){ //east moves
-            if (((xCoord + i) < 8) && ChessBoard.board[xCoord + i][yCoord] == null) {
-                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord));
-                i++;
-            }  
-            if  (((xCoord + i) < 8) && ChessBoard.board[xCoord + i][yCoord].getColor() == color){ //same color peice blocks movement
-                break;
-            }
-            else if  (((xCoord + i) < 8) && ChessBoard.board[xCoord + i][yCoord].getColor() != color){//different color, take move DOUBLE CHECK!!!!
-                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord));
-            }
-            break;
-        }
+        //north
         int j = 1;
-        while (true){ //north
-            if (((yCoord - j) >= 0) && ChessBoard.board[xCoord][yCoord - j] == null) {
-                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord - j));
+        while (yCoord  - j >= 0 ){
+            if (ChessBoard.board[xCoord][yCoord - j] == null){ //if its in bounds and if no other piece is there
+                possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord - j));
                 j++;
-            }  
-            if  (((yCoord - j) >= 0) && ChessBoard.board[xCoord][yCoord - j].getColor() == color){ //same color peice blocks movement
-                break;
             }
-            else if  (((yCoord - j) >= 0) && ChessBoard.board[xCoord][yCoord - j].getColor() != color){//different color, take move DOUBLE CHECK!!!!
-                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord - j));
+            else if (ChessBoard.board[xCoord][yCoord - j] != null){
+                if (ChessBoard.board[xCoord][yCoord - j].getColor() != color){ //different color, take
+                    possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord - j));
+                    break;
+                }
+                else break;
             }
-            break;        
+
         }
+        //south
         j = 1;
-        while (true){ //south
-            if (((yCoord + j) < 8) && ChessBoard.board[xCoord][yCoord + j] == null) {
-                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord + j));
+        while (yCoord  + j < 8 ){
+            if (ChessBoard.board[xCoord][yCoord + j] == null){ //if its in bounds and if no other piece is there
+                possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord + j));
                 j++;
-            }  
-            if  (((yCoord + j) < 8) && ChessBoard.board[xCoord][yCoord + j].getColor() == color){ //same color peice blocks movement
-                break;
             }
-            else if  (((yCoord - j) < 8 ) && ChessBoard.board[xCoord][yCoord + j].getColor() != color){//different color, take move DOUBLE CHECK!!!!
-                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord + j));
+            else if (ChessBoard.board[xCoord][yCoord + j] != null){
+                if (ChessBoard.board[xCoord][yCoord + j].getColor() != color){ //different color, take
+                    possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord + j));
+                    break;
+                }
+                else break;
             }
-            break;        
         }
-        //maybe add castling here too
+        //east
+        j = 1;
+        while (xCoord  + j < 8 ){
+            if (ChessBoard.board[xCoord + j][yCoord] == null){ //if its in bounds and if no other piece is there
+                possibleMoves.add("xCoord: " + (xCoord + j) + ",yCoord: " + yCoord);
+                j++;
+            }
+            else if (ChessBoard.board[xCoord + j][yCoord] != null){
+                if (ChessBoard.board[xCoord + j][yCoord].getColor() != color){ //different color, take
+                    possibleMoves.add("xCoord: " + (xCoord + j) + ",yCoord: " + yCoord);
+                    break;
+                }
+                else break;
+            }
+        }
+        //west
+        j = 1;
+        while (xCoord  - j >= 0 ){
+            if (ChessBoard.board[xCoord - j][yCoord] == null){ //if its in bounds and if no other piece is there
+                possibleMoves.add("xCoord: " + (xCoord - j) + ",yCoord: " + yCoord);
+                j++;
+            }
+            else if (ChessBoard.board[xCoord - j][yCoord] != null){
+                if (ChessBoard.board[xCoord - j][yCoord].getColor() != color){ //different color, take
+                    possibleMoves.add("xCoord: " + (xCoord - j) + ",yCoord: " + yCoord);
+                    break;
+                }
+                else break;
+            }
+        }
+        
         return possibleMoves;
     }
+
     /**
      * To String method used to print the board
      * 

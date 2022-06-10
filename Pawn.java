@@ -23,6 +23,9 @@ public class Pawn extends ChessPiece implements Piece{
      * 
      * @return ArrayList type String containing all possible moves in format "xCoord: x, yCoord: y"
      */
+
+
+     //EDGES DONT WORK, MIDDLE PEICES DO.
     public ArrayList<String> checkMoves(){
         possibleMoves = new ArrayList<String>();
         if (color == 'b'){
@@ -50,16 +53,20 @@ public class Pawn extends ChessPiece implements Piece{
             }
         }                                                                                                              
         else if (color == 'w'){
-            if (xCoord == 6 && (ChessBoard.board[xCoord][yCoord - 1] == null) && (ChessBoard.board[xCoord][yCoord - 2] == null)){
-                possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord - 2) + "AAA");
+            if (xCoord == 6){
+                if(ChessBoard.board[xCoord][yCoord - 1] == null && (ChessBoard.board[xCoord][yCoord - 2] == null)){
+                    possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord - 2) + "AAA"); //not running when it should
+                }
             }
             if (ChessBoard.board[xCoord][yCoord - 1] == null){
-                possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord - 1) + "wtf");
+                System.out.println("?");
+                possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord - 1) + "wtf"); //not running when it should
             }
             if (xCoord + 1 < 8 && yCoord - 1 >= 0){ //take moving east
                 if (ChessBoard.board[xCoord + 1][yCoord - 1] != null){
-                    if (ChessBoard.board[xCoord + 1][yCoord - 1].getColor() != 'b'){ //issue here. running when it shouldnt
-                        possibleMoves.add("xCoord: " + (xCoord + 1) + ",yCoord: " + (yCoord - 1) + "BBB"); 
+                    if (ChessBoard.board[xCoord + 1][yCoord - 1].getColor() != 'b'){ //running when it shouldn't. also yCoord is being weird
+                        System.out.println("take move east");
+                        possibleMoves.add("xCoord: " + (xCoord + 1) + ",yCoord: " + (yCoord - 1)); 
                     }
                 }
             }
@@ -76,10 +83,10 @@ public class Pawn extends ChessPiece implements Piece{
         return possibleMoves;
     }
     public void promotion(){ //will call on every pawn move.    
-                             //prompt user to promote to a queen, knight, rook, or bishop. Then convert pawn to it. Can probably create new peice and replace it over the pawn
+                             //prompt user to promote to a queen, knight, rook, or bishop. Then convert pawn to it. Can probably create new piece and replace it over the pawn
         if ((xCoord == 0 && color == 'w') || (xCoord == 7 && color == 'b')){
             Scanner in = new Scanner(System.in);
-            if (color == 'w'){ //seperated by color to avoid further nesting
+            if (color == 'w'){ //separated by color to avoid further nesting
                 System.out.println("White pawn is ready for promotion. Would you like to promote to a queen, knight, rook, or bishop?");
                 String input = in.nextLine();
                 while (true){

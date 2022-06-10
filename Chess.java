@@ -9,7 +9,6 @@ public class Chess {
     public static void main(String[] args) {
 
         ChessPiece[][] board = ChessBoard.createBoard();
-        //ChessPiece test = board[0][1];
         Scanner in = new Scanner(System.in);
         
         System.out.println("Initializing board...");

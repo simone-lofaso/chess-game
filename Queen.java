@@ -32,7 +32,7 @@ public class Queen extends ChessPiece implements Piece {
                 possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord));
                 i++;
             }  
-            if  (((xCoord - i) >= 0) && ChessBoard.board[xCoord - i][yCoord].getColor() == color){ //same color peice blocks movement
+            if  (((xCoord - i) >= 0) && ChessBoard.board[xCoord - i][yCoord].getColor() == color){ //same color piece blocks movement
                 break;
             }
             else if  (((xCoord - i) >= 0) && ChessBoard.board[xCoord - i][yCoord].getColor() != color){//different color, take move DOUBLE CHECK!!!!
@@ -46,7 +46,7 @@ public class Queen extends ChessPiece implements Piece {
                 possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord));
                 i++;
             }  
-            if  (((xCoord + i) < 8) && ChessBoard.board[xCoord + i][yCoord].getColor() == color){ //same color peice blocks movement
+            if  (((xCoord + i) < 8) && ChessBoard.board[xCoord + i][yCoord].getColor() == color){ //same color piece blocks movement
                 break;
             }
             else if  (((xCoord + i) < 8) && ChessBoard.board[xCoord + i][yCoord].getColor() != color){//different color, take move DOUBLE CHECK!!!!
@@ -60,7 +60,7 @@ public class Queen extends ChessPiece implements Piece {
                 possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord - j));
                 j++;
             }  
-            if  (((yCoord - j) >= 0) && ChessBoard.board[xCoord][yCoord - j].getColor() == color){ //same color peice blocks movement
+            if  (((yCoord - j) >= 0) && ChessBoard.board[xCoord][yCoord - j].getColor() == color){ //same color piece blocks movement
                 break;
             }
             else if  (((yCoord - j) >= 0) && ChessBoard.board[xCoord][yCoord - j].getColor() != color){//different color, take move DOUBLE CHECK!!!!
@@ -74,7 +74,7 @@ public class Queen extends ChessPiece implements Piece {
                 possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord + j));
                 j++;
             }  
-            if  (((yCoord + j) < 8) && ChessBoard.board[xCoord][yCoord + j].getColor() == color){ //same color peice blocks movement
+            if  (((yCoord + j) < 8) && ChessBoard.board[xCoord][yCoord + j].getColor() == color){ //same color piece blocks movement
                 break;
             }
             else if  (((yCoord - j) < 8 ) && ChessBoard.board[xCoord][yCoord + j].getColor() != color){//different color, take move DOUBLE CHECK!!!!
