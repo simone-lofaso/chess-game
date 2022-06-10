@@ -23,7 +23,7 @@ public class Pawn extends ChessPiece implements Piece{
      * 
      * @return ArrayList type String containing all possible moves in format "xCoord: x, yCoord: y"
      */
-     //NO TAKE MOVES WORK. BLACK SUCKS, USE WHITE FOR BASE AND DELETE BLACK
+     //Seems to work fine. Consider removing y constraints for take moves.
     public ArrayList<String> checkMoves(){
         possibleMoves = new ArrayList<String>();
         if (color == 'b'){
@@ -35,48 +35,45 @@ public class Pawn extends ChessPiece implements Piece{
             if (ChessBoard.board[xCoord][yCoord + 1] == null){;
                 possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord + 1)); 
             }
-            if (xCoord + 1 < 8 && yCoord + 1 >= 0){ //take moving east
-                if (ChessBoard.board[xCoord + 1][yCoord + 1] != null){
-                    if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() == 'w'){ 
-                        System.out.println("take move east");
-                        possibleMoves.add("xCoord: " + (xCoord + 1) + ",yCoord: " + (yCoord + 1)); 
-                    }
-                }
-            }
-            if (xCoord - 1 >= 0 && yCoord - 1 >= 0){
+            if (xCoord - 1 >= 0 && yCoord + 1 >= 0){
                 if (ChessBoard.board[xCoord - 1][yCoord + 1] != null){ //take moving west
                     if (ChessBoard.board[xCoord - 1][yCoord + 1].getColor() == 'w' ){ 
                         possibleMoves.add("xCoord: " + (xCoord - 1) + ",yCoord: " + (yCoord + 1)); 
                     }
                 }
-            }
-        }                                                                                                       
+            } 
+            if (xCoord + 1 < 8 && yCoord + 1 >= 0){ 
+                if (ChessBoard.board[xCoord + 1][yCoord + 1] != null){ //take move east
+                    if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() == 'w'){
+                        possibleMoves.add("xCoord: " + (xCoord + 1) + ",yCoord: " + (yCoord + 1)); 
+                    }
+                }
+             } 
+        }
         else if (color == 'w'){
             if (yCoord == 6){
                 if(ChessBoard.board[xCoord][yCoord - 1] == null && (ChessBoard.board[xCoord][yCoord - 2] == null)){ 
                     possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord - 2)); 
                 }
             }
-            if (ChessBoard.board[xCoord][yCoord - 1] == null){;
+            if (ChessBoard.board[xCoord][yCoord - 1] == null){
                 possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord - 1)); 
-            }
-            if (xCoord + 1 < 8 && yCoord - 1 >= 0){ //take moving east
-                if (ChessBoard.board[xCoord + 1][yCoord - 1] != null){
-                    if (ChessBoard.board[xCoord + 1][yCoord - 1].getColor() == 'b'){ 
-                        System.out.println("take move east");
-                        possibleMoves.add("xCoord: " + (xCoord + 1) + ",yCoord: " + (yCoord - 1)); 
-                    }
-                }
             }
             if (xCoord - 1 >= 0 && yCoord - 1 >= 0){
                 if (ChessBoard.board[xCoord - 1][yCoord - 1] != null){ //take moving west
                     if (ChessBoard.board[xCoord - 1][yCoord - 1].getColor() == 'b' ){ 
                         possibleMoves.add("xCoord: " + (xCoord - 1) + ",yCoord: " + (yCoord - 1)); 
                     }
-                }
+                } 
             }
+            if (xCoord + 1 < 8 && yCoord - 1 >= 0){  //can probably remove y constraint
+                if (ChessBoard.board[xCoord + 1][yCoord - 1] != null){ //take move east
+                    if (ChessBoard.board[xCoord + 1][yCoord - 1].getColor() == 'b'){
+                        possibleMoves.add("xCoord: " + (xCoord + 1) + ",yCoord: " + (yCoord - 1)); 
+                    }
+                }
+            } 
         }
-        
 
         return possibleMoves;
     }

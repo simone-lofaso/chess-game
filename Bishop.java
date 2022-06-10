@@ -18,7 +18,7 @@ public class Bishop extends ChessPiece implements Piece{
         xCoord = x;
         yCoord = y;
     }
-    
+    //Needs null checking aswell. Check to rook class for guide.
     public ArrayList<String> checkMoves(){
         possibleMoves = new ArrayList<String>();
         while (true){ //northwest

@@ -23,6 +23,8 @@ public class King extends ChessPiece implements Piece {
      * 
      * @return ArrayList type String containing all possible moves in format "xCoord: x, yCoord: y"
      */
+
+     //Needs null checking before getColor() is ran. Should just be able to nest the current constraint in a null check.
     public ArrayList<String> checkMoves(){ 
         possibleMoves = new ArrayList<String>(); 
         

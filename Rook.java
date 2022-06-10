@@ -86,7 +86,6 @@ public class Rook extends ChessPiece implements Piece{
                 else break;
             }
         }
-        
         return possibleMoves;
     }
 

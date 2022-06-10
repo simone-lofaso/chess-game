@@ -6,6 +6,7 @@ public class Queen extends ChessPiece implements Piece {
     private char color;
 
     public ArrayList<String> possibleMoves;
+    //QUEEN AND BISHOP NEED DIAGONAL MOVE TESTING
 
     /**
      * Queen object initializer. X and Y coordinates will be updated as the Queen is moved. Does not contain error checking as it is never used by the user.
@@ -26,65 +27,70 @@ public class Queen extends ChessPiece implements Piece {
      */
     public ArrayList<String> checkMoves(){
         possibleMoves = new ArrayList<String>();
-        while (true){ //west moves
-            int i = 1;
-            if (((xCoord - i) >= 0) && ChessBoard.board[xCoord - i][yCoord] == null) {
-                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord));
-                i++;
-            }  
-            if  (((xCoord - i) >= 0) && ChessBoard.board[xCoord - i][yCoord].getColor() == color){ //same color piece blocks movement
-                break;
-            }
-            else if  (((xCoord - i) >= 0) && ChessBoard.board[xCoord - i][yCoord].getColor() != color){//different color, take move DOUBLE CHECK!!!!
-                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord));
-            }
-            break;
-        }
-        while (true){ //east moves
-            int i = 1;
-            if (((xCoord + i) < 8) && ChessBoard.board[xCoord + i][yCoord] == null) {
-                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord));
-                i++;
-            }  
-            if  (((xCoord + i) < 8) && ChessBoard.board[xCoord + i][yCoord].getColor() == color){ //same color piece blocks movement
-                break;
-            }
-            else if  (((xCoord + i) < 8) && ChessBoard.board[xCoord + i][yCoord].getColor() != color){//different color, take move DOUBLE CHECK!!!!
-                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord));
-            }
-            break;
-        }
-        while (true){ //north
-            int j = 1;
-            if (((yCoord - j) >= 0) && ChessBoard.board[xCoord][yCoord - j] == null) {
-                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord - j));
+        //north
+        int j = 1;
+        while (yCoord  - j >= 0 ){
+            if (ChessBoard.board[xCoord][yCoord - j] == null){ //if its in bounds and if no other piece is there
+                possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord - j));
                 j++;
-            }  
-            if  (((yCoord - j) >= 0) && ChessBoard.board[xCoord][yCoord - j].getColor() == color){ //same color piece blocks movement
-                break;
             }
-            else if  (((yCoord - j) >= 0) && ChessBoard.board[xCoord][yCoord - j].getColor() != color){//different color, take move DOUBLE CHECK!!!!
-                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord - j));
+            else if (ChessBoard.board[xCoord][yCoord - j] != null){
+                if (ChessBoard.board[xCoord][yCoord - j].getColor() != color){ //different color, take
+                    possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord - j));
+                    break;
+                }
+                else break;
             }
-            break;        
+
         }
-        while (true){ //south
-            int j = 1;
-            if (((yCoord + j) < 8) && ChessBoard.board[xCoord][yCoord + j] == null) {
-                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord + j));
+        //south
+        j = 1;
+        while (yCoord  + j < 8 ){
+            if (ChessBoard.board[xCoord][yCoord + j] == null){ //if its in bounds and if no other piece is there
+                possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord + j));
                 j++;
-            }  
-            if  (((yCoord + j) < 8) && ChessBoard.board[xCoord][yCoord + j].getColor() == color){ //same color piece blocks movement
-                break;
             }
-            else if  (((yCoord - j) < 8 ) && ChessBoard.board[xCoord][yCoord + j].getColor() != color){//different color, take move DOUBLE CHECK!!!!
-                possibleMoves.add("xCoord:" + (xCoord) + ",yCoord: " + (yCoord + j));
+            else if (ChessBoard.board[xCoord][yCoord + j] != null){
+                if (ChessBoard.board[xCoord][yCoord + j].getColor() != color){ //different color, take
+                    possibleMoves.add("xCoord: " + xCoord + ",yCoord: " + (yCoord + j));
+                    break;
+                }
+                else break;
             }
-            break;        
         }
+        //east
+        j = 1;
+        while (xCoord  + j < 8 ){
+            if (ChessBoard.board[xCoord + j][yCoord] == null){ //if its in bounds and if no other piece is there
+                possibleMoves.add("xCoord: " + (xCoord + j) + ",yCoord: " + yCoord);
+                j++;
+            }
+            else if (ChessBoard.board[xCoord + j][yCoord] != null){
+                if (ChessBoard.board[xCoord + j][yCoord].getColor() != color){ //different color, take
+                    possibleMoves.add("xCoord: " + (xCoord + j) + ",yCoord: " + yCoord);
+                    break;
+                }
+                else break;
+            }
+        }
+        //west
+        j = 1;
+        while (xCoord  - j >= 0 ){
+            if (ChessBoard.board[xCoord - j][yCoord] == null){ //if its in bounds and if no other piece is there
+                possibleMoves.add("xCoord: " + (xCoord - j) + ",yCoord: " + yCoord);
+                j++;
+            }
+            else if (ChessBoard.board[xCoord - j][yCoord] != null){
+                if (ChessBoard.board[xCoord - j][yCoord].getColor() != color){ //different color, take
+                    possibleMoves.add("xCoord: " + (xCoord - j) + ",yCoord: " + yCoord);
+                    break;
+                }
+                else break;
+            }
+        }
+        int i = 1; //horizontal
+        j = 1; //vertical
         while (true){ //northwest
-            int i = 1; //horizontal
-            int j = 1; // vertical
             if ((xCoord - i >= 0) && (yCoord - j >= 0) && ChessBoard.board[xCoord - i][yCoord - j] == null){
                 possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord - j));
                 i++;
@@ -97,11 +103,11 @@ public class Queen extends ChessPiece implements Piece {
                 possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord - j));
                 break;
             } 
+        }
 
-        } 
+        i = 1;
+        j = 1; 
         while (true){ //northeast
-            int i = 1; 
-            int j = 1; 
             if ((xCoord + i < 8) && (yCoord - j >= 0) && ChessBoard.board[xCoord + i][yCoord - j] == null){
                 possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord - j));
                 i++;
@@ -116,9 +122,10 @@ public class Queen extends ChessPiece implements Piece {
             } 
 
         }
+
+        i = 1;
+        j = 1;
         while (true){ //southwest
-            int i = 1; 
-            int j = 1; 
             if ((xCoord + i < 8) && (yCoord + j < 8 ) && ChessBoard.board[xCoord + i][yCoord + j] == null){
                 possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord + j));
                 i++;
@@ -133,9 +140,10 @@ public class Queen extends ChessPiece implements Piece {
             } 
 
         }  
+        
+        i = 1;
+        j = 1;
         while (true){ //southeast
-            int i = 1; 
-            int j = 1; 
             if ((xCoord - i >= 0) && (yCoord + j < 8 ) && ChessBoard.board[xCoord - i][yCoord + j] == null){
                 possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord + j));
                 i++;
