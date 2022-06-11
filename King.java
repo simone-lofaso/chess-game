@@ -30,66 +30,66 @@ public class King extends ChessPiece implements Piece {
         
         if (yCoord - 1 >= 0){//north move possible          
             if (ChessBoard.board[xCoord][yCoord - 1] == null){
-                possibleMoves.add( "xCoord:" + xCoord + ",yCoord: " + (yCoord - 1));
+                possibleMoves.add( "xCoord: " + xCoord + ",yCoord: " + (yCoord - 1));
             }
             else if (ChessBoard.board[xCoord][yCoord - 1].getColor() != color){
-                possibleMoves.add( "xCoord:" + xCoord + ",yCoord: " + (yCoord - 1));
+                possibleMoves.add( "xCoord: " + xCoord + ",yCoord: " + (yCoord - 1));
             }
         } 
         if (yCoord + 1 < 8){ //south move possible
             if (ChessBoard.board[xCoord][yCoord + 1] == null){
-                possibleMoves.add( "xCoord:" + xCoord + ",yCoord: " + (yCoord + 1));
+                possibleMoves.add( "xCoord: " + xCoord + ",yCoord: " + (yCoord + 1));
             }
             else if (ChessBoard.board[xCoord][yCoord - 1].getColor() != color){
-                possibleMoves.add( "xCoord:" + xCoord + ",yCoord: " + (yCoord + 1));
+                possibleMoves.add( "xCoord: " + xCoord + ",yCoord: " + (yCoord + 1));
             }
         } 
         if (xCoord + 1 < 8){ //east move possible
             if (ChessBoard.board[xCoord + 1][yCoord] == null){
-                possibleMoves.add( "xCoord:" + (xCoord + 1) + ",yCoord: " + yCoord);
+                possibleMoves.add( "xCoord: " + (xCoord + 1) + ",yCoord: " + yCoord);
             }
             else if (ChessBoard.board[xCoord + 1][yCoord].getColor() != color){
-                possibleMoves.add( "xCoord:" + (xCoord + 1) + ",yCoord: " + yCoord);
+                possibleMoves.add( "xCoord: " + (xCoord + 1) + ",yCoord: " + yCoord);
             }
         }
         if (xCoord - 1 >= 0){ //west move possible
             if (ChessBoard.board[xCoord + 1][yCoord] == null){
-                possibleMoves.add( "xCoord:" + (xCoord - 1) + ",yCoord: " + yCoord);
+                possibleMoves.add( "xCoord: " + (xCoord - 1) + ",yCoord: " + yCoord);
             }
             else if (ChessBoard.board[xCoord + 1][yCoord].getColor() != color){
-                possibleMoves.add( "xCoord:" + (xCoord + 1) + ",yCoord: " + yCoord);
+                possibleMoves.add( "xCoord: " + (xCoord + 1) + ",yCoord: " + yCoord);
             }
         }
         if ((xCoord + 1 < 8)  && (yCoord + 1 < 8)){ //southeast move possible
             if (ChessBoard.board[xCoord + 1][yCoord  + 1] == null){
-                possibleMoves.add( "xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord + 1));
+                possibleMoves.add( "xCoord: " + (xCoord + 1) + ",yCoord: " + (yCoord + 1));
             }
             else if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != color){
-                possibleMoves.add( "xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord + 1));
+                possibleMoves.add( "xCoord: " + (xCoord + 1) + ",yCoord: " + (yCoord + 1));
             }
         }
         if ((xCoord - 1 >= 0)  && (yCoord + 1 < 8)){ //southwest move possible
             if (ChessBoard.board[xCoord - 1][yCoord  + 1] == null){
-                possibleMoves.add( "xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord + 1));
+                possibleMoves.add( "xCoord: " + (xCoord - 1) + ",yCoord: " + (yCoord + 1));
             }
             else if (ChessBoard.board[xCoord - 1][yCoord + 1].getColor() != color){
-                possibleMoves.add( "xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord + 1));
+                possibleMoves.add( "xCoord: " + (xCoord - 1) + ",yCoord: " + (yCoord + 1));
             }
         }
         if ((xCoord + 1 < 8)  && (yCoord - 1 >= 0)){ //northeast move possible
             if (ChessBoard.board[xCoord + 1][yCoord  - 1] == null){
-                possibleMoves.add( "xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord - 1));
+                possibleMoves.add( "xCoord: " + (xCoord + 1) + ",yCoord: " + (yCoord - 1));
             }
-            else if (ChessBoard.board[xCoord + 1][yCoord + 1].getColor() != color){
-                possibleMoves.add( "xCoord:" + (xCoord + 1) + ",yCoord: " + (yCoord - 1));
+            else if (ChessBoard.board[xCoord + 1][yCoord - 1].getColor() != color){
+                possibleMoves.add( "xCoord: " + (xCoord + 1) + ",yCoord: " + (yCoord - 1));
             }
         }
         if ((xCoord - 1 >= 0)  && (yCoord - 1 >= 0)){ //northwest move possible
             if (ChessBoard.board[xCoord - 1][yCoord  - 1] == null){
-                possibleMoves.add( "xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord - 1));
+                possibleMoves.add( "xCoord: " + (xCoord - 1) + ",yCoord: " + (yCoord - 1));
             }
             else if (ChessBoard.board[xCoord - 1][yCoord - 1].getColor() != color){
-                possibleMoves.add( "xCoord:" + (xCoord - 1) + ",yCoord: " + (yCoord - 1));
+                possibleMoves.add( "xCoord: " + (xCoord - 1) + ",yCoord: " + (yCoord - 1));
             }
         } 
         //maybe add castling? Should designate castling in prompt for move. 

@@ -50,7 +50,4 @@ public class ChessPiece {
 
     public void promotion() { //Here bc I think its needed for promotion to work. Needs testing.
     }
-    
-
-
 }

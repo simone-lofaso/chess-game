@@ -18,14 +18,20 @@ public class Bishop extends ChessPiece implements Piece{
         xCoord = x;
         yCoord = y;
     }
-    //Needs null checking aswell. Check to rook class for guide.
+    //Needs null checking as well. Check to rook class for guide.
+    /**
+     * Checks possible moves and adds them to an ArrayList type String. Chess.java uses this to see if a user requested move is valid.
+     * 
+     * @return ArrayList type String containing all possible moves in format "xCoord: x, yCoord: y"
+     * 
+     */
     public ArrayList<String> checkMoves(){
         possibleMoves = new ArrayList<String>();
         while (true){ //northwest
             int i = 1; //horizontal
             int j = 1; // vertical
             if ((xCoord - i >= 0) && (yCoord - j >= 0) && ChessBoard.board[xCoord - i][yCoord - j] == null){
-                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord - j));
+                possibleMoves.add("xCoord: " + (xCoord - i) + ",yCoord: " + (yCoord - j));
                 i++;
                 j++;
             }
@@ -33,7 +39,7 @@ public class Bishop extends ChessPiece implements Piece{
                 break;
             }
             else if ((xCoord - i >= 0) && (yCoord - j >= 0) && ChessBoard.board[xCoord - i][yCoord - j].getColor() != color){ //different color, take
-                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord - j));
+                possibleMoves.add("xCoord: " + (xCoord - i) + ",yCoord: " + (yCoord - j));
                 break;
             } 
 
@@ -42,7 +48,7 @@ public class Bishop extends ChessPiece implements Piece{
             int i = 1; 
             int j = 1; 
             if ((xCoord + i < 8) && (yCoord - j >= 0) && ChessBoard.board[xCoord + i][yCoord - j] == null){
-                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord - j));
+                possibleMoves.add("xCoord: " + (xCoord + i) + ",yCoord: " + (yCoord - j));
                 i++;
                 j++;
             }
@@ -50,7 +56,7 @@ public class Bishop extends ChessPiece implements Piece{
                 break;
             }
             else if ((xCoord + i < 8) && (yCoord - j >= 0) && ChessBoard.board[xCoord + i][yCoord - j].getColor() != color){
-                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord - j));
+                possibleMoves.add("xCoord: " + (xCoord + i) + ",yCoord: " + (yCoord - j));
                 break;
             } 
 
@@ -59,7 +65,7 @@ public class Bishop extends ChessPiece implements Piece{
             int i = 1; 
             int j = 1; 
             if ((xCoord + i < 8) && (yCoord + j < 8 ) && ChessBoard.board[xCoord + i][yCoord + j] == null){
-                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord + j));
+                possibleMoves.add("xCoord: " + (xCoord + i) + ",yCoord: " + (yCoord + j));
                 i++;
                 j++;
             }
@@ -67,7 +73,7 @@ public class Bishop extends ChessPiece implements Piece{
                 break;
             }
             else if ((xCoord + i < 8) && (yCoord + j < 8) && ChessBoard.board[xCoord + i][yCoord + j].getColor() != color){
-                possibleMoves.add("xCoord:" + (xCoord + i) + ",yCoord: " + (yCoord + j));
+                possibleMoves.add("xCoord: " + (xCoord + i) + ",yCoord: " + (yCoord + j));
                 break;
             } 
 
@@ -76,7 +82,7 @@ public class Bishop extends ChessPiece implements Piece{
             int i = 1; 
             int j = 1; 
             if ((xCoord - i >= 0) && (yCoord + j < 8 ) && ChessBoard.board[xCoord - i][yCoord + j] == null){
-                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord + j));
+                possibleMoves.add("xCoord: " + (xCoord - i) + ",yCoord: " + (yCoord + j));
                 i++;
                 j++;
             }
@@ -84,7 +90,7 @@ public class Bishop extends ChessPiece implements Piece{
                 break;
             }
             else if ((xCoord - i >= 0) && (yCoord + j < 8) && ChessBoard.board[xCoord - i][yCoord + j].getColor() != color){
-                possibleMoves.add("xCoord:" + (xCoord - i) + ",yCoord: " + (yCoord + j));
+                possibleMoves.add("xCoord: " + (xCoord - i) + ",yCoord: " + (yCoord + j));
                 break;
             } 
 

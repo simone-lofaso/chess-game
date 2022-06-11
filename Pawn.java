@@ -83,7 +83,7 @@ public class Pawn extends ChessPiece implements Piece{
      */
     public void promotion(){ //will call on every pawn move.    
                             
-        if ((xCoord == 0 && color == 'w') || (xCoord == 7 && color == 'b')){
+        if ((yCoord == 0 && color == 'w') || (yCoord == 7 && color == 'b')){
             Scanner in = new Scanner(System.in);
             if (color == 'w'){ //separated by color to avoid further nesting
                 System.out.println("White pawn is ready for promotion. Would you like to promote to a queen, knight, rook, or bishop?");
@@ -107,6 +107,7 @@ public class Pawn extends ChessPiece implements Piece{
                     }
                     else{
                       System.out.println("Input not recognized. Please try again.");
+                      break;
                     }
                 }
             }
