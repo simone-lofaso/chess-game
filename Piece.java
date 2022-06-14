@@ -4,7 +4,7 @@ public interface Piece {
     /**
      * Returns an array list of all possible moves for the selected piece.
      * 
-     * @return ArrayList type String of all posible moves. Format is "xCoord: x, yCoord: y".
+     * @return ArrayList type String of all possible moves. Format is "xCoord: x, yCoord: y".
      */
     ArrayList<String> checkMoves();
 
