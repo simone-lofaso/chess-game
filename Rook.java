@@ -1,13 +1,14 @@
 import java.util.ArrayList;
+
 public class Rook extends ChessPiece implements Piece{
     private int xCoord; 
     private int yCoord;
     private char color; 
     
     public ArrayList<String> possibleMoves;
-    
+
      /**
-     * Rook object initializer. X and Y coordinates will be updated as the Rook is moved. Does not contain error checking as it is never used by the user.
+     * Rook constructor. X and Y coordinates will be updated as the Rook is moved. Does not contain error checking as it is never used by the user.
      * 
      * @param x Starting X coordinate
      * @param y Starting y Coordinate
@@ -108,6 +109,7 @@ public class Rook extends ChessPiece implements Piece{
     public char getColor(){
         return color; 
     }
+    
     /**
      * X coordinate setter
      * 

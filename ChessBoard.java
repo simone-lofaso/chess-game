@@ -1,7 +1,6 @@
 public class ChessBoard {
     public static ChessPiece[][] board;
 
-
     /**
      * Creates the board 2D array.
      * 
@@ -27,12 +26,12 @@ public class ChessBoard {
         board[7][0] = new Rook(7, 0, 'b');
 
         board[0][1] = new Pawn(0, 1, 'b');
-        board[1][1] = new Pawn(1, 1, 'b');
+        board[1][1] = new Pawn(1, 1, 'b'); 
         board[2][1] = new Pawn(2, 1, 'b');
         board[3][1] = new Pawn(3, 1, 'b');
         board[4][1] = new Pawn(4, 1, 'b');
         board[5][1] = new Pawn(5, 1, 'b');
-        board[6][1] = new Pawn(6, 1, 'b');
+        board[6][1] = new Pawn(6, 1, 'b'); 
         board[7][1] = new Pawn(7, 1, 'b');
 
         board[0][7] = new Rook(0,7,'w');
@@ -70,7 +69,7 @@ public class ChessBoard {
                 else System.out.print("|   ");
                 }
             System.out.println("|");
-            System.out.println("   ---------------------------------"); //could use unicode em dash to make it look better but vscode is dumb     
+            System.out.println("   ---------------------------------");
         }
         System.out.println("     0   1   2   3   4   5   6   7 ");
     }

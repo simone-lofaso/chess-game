@@ -1,14 +1,14 @@
 import java.util.ArrayList;
+
 public class Bishop extends ChessPiece implements Piece{
-    private int xCoord; //check Bishop.java for com
+    private int xCoord;
     private int yCoord;
     private char color;
 
-    
     public ArrayList<String> possibleMoves;
 
     /**
-     * Bishop object initializer. X and Y coordinates will be updated as the Bishop is moved. Does not contain error checking as it is never used by the user.
+     * Bishop constructor. X and Y coordinates will be updated as the Bishop is moved. Does not contain error checking as it is never used by the user.
      * 
      * @param x Starting X coordinate
      * @param y Starting y Coordinate
@@ -27,7 +27,6 @@ public class Bishop extends ChessPiece implements Piece{
      * 
      */
 
-     //Something wrong with take move. Rook does not suffer
     public ArrayList<String> checkMoves(){
         possibleMoves = new ArrayList<String>();
         int i = 1;

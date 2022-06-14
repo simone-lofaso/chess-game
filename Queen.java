@@ -6,10 +6,9 @@ public class Queen extends ChessPiece implements Piece {
     private char color;
 
     public ArrayList<String> possibleMoves;
-    //QUEEN NEEDS TESTING
 
     /**
-     * Queen object initializer. X and Y coordinates will be updated as the Queen is moved. Does not contain error checking as it is never used by the user.
+     * Queen constructor. X and Y coordinates will be updated as the Queen is moved. Does not contain error checking as it is never used by the user.
      * 
      * @param x Starting X coordinate
      * @param y Starting y Coordinate

@@ -1,14 +1,10 @@
 import java.util.ArrayList;
 
+/**
+* Parent class to extend piece types. No constructor as every object should be the specific piece.
+* 
+*/
 public class ChessPiece {
-
-    /**
-     * Dummy class to extend piece types.
-     * 
-     */
-    
-    public static boolean WHITE_PRINT_POSSIBLE_MOVES = true;
-    public static boolean BLACK_PRINT_POSSIBLE_MOVES = true;
 
     public int xCoord;
     public int yCoord;

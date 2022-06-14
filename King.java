@@ -1,13 +1,14 @@
 import java.util.ArrayList;
+
 public class King extends ChessPiece implements Piece {
-    private int xCoord; //manual tracking of position
+    private int xCoord; 
     private int yCoord;
-    private char color; //stores color in a character. Not using string here since i don't really see a need to. b for black, c for white
+    private char color; 
     
     public ArrayList<String> possibleMoves;
     
     /**
-     * King object initializer. X and Y coordinates will be updated as the King is moved. Does not contain error checking as it is never used by the user.
+     * King constructor. X and Y coordinates will be updated as the King is moved. Does not contain error checking as it is never used by the user.
      * 
      * @param x Starting X coordinate
      * @param y Starting y Coordinate
@@ -18,6 +19,7 @@ public class King extends ChessPiece implements Piece {
         xCoord = x;
         yCoord = y; 
     }
+
     /**
      * Checks possible moves and adds them to an ArrayList type String. Chess.java uses this to see if a user requested move is valid.
      * 
@@ -92,7 +94,7 @@ public class King extends ChessPiece implements Piece {
                 possibleMoves.add( "xCoord: " + (xCoord - 1) + ",yCoord: " + (yCoord - 1));
             }
         } 
-        //maybe add castling? Should designate castling in prompt for move. 
+
         return possibleMoves;
     }
     
@@ -114,6 +116,7 @@ public class King extends ChessPiece implements Piece {
     public char getColor(){
         return color; 
     }
+
     /**
      * X coordinate setter
      * 
