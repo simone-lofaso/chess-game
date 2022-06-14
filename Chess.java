@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * Run this class to play.
+ * 
+ */
 public class Chess {
     
     private static ArrayList<ChessPiece> whiteTook = new ArrayList<ChessPiece>();
