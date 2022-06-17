@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 /**
  * Run this class to play.
@@ -56,14 +57,18 @@ public class Chess {
         while (true){ //game 
             while (whiteTurn){ //white turn
                 System.out.println("It is White's turn. Please select a piece you would like to move. Input as is follows: xCoord yCoord. Ex: 0 1");
-                if (!in.hasNextInt()){
+                
+                int xPos;
+                int yPos;
+
+                try{
+                    xPos = in.nextInt();
+                    yPos = in.nextInt();
+                } catch (InputMismatchException x){
                     System.out.println("Input not recognized. Please try again.");
                     in.next();
                     continue;
                 }
-
-                int xPos = in.nextInt();
-                int yPos = in.nextInt();
         
                 if (xPos > 8 || xPos < 0){
                     System.out.println("X position is not within the bounds of the board. Choose a number from 0 to 7.");
@@ -98,86 +103,83 @@ public class Chess {
                         int xCoord; 
                         int yCoord;
 
-                        if (!in.hasNextInt()){
-                            String input = in.next();
-                            if (input.equals("q")){
-                                break;
-                            }
-                            else{
-                                System.out.println("Input not recognized. Please try again.");
-                                in.next();
-                                continue;
-                            }
-                        }
-                        else{
+                        try{
                             xCoord = in.nextInt();
                             yCoord = in.nextInt();
-                            if (xCoord > 8 ||xCoord< 0){
-                                System.out.println("The given X Position is not within the bounds of the board. Please try again.");
-                                continue; 
+                        } catch (InputMismatchException x){
+                            System.out.println("Input not recognized. Please try again.");
+                            in.next();
+                            continue;
+                        }
+
+                        if (xCoord > 8 ||xCoord< 0){
+                            System.out.println("The given X Position is not within the bounds of the board. Please try again.");
+                            continue; 
+                        }
+                        else if (yCoord > 8 || yCoord < 0){
+                            System.out.println("The given Y Position is not within the bounds of the board. Please try again.");
+                            continue;
+                        }
+                        else if (xCoord == xPos && yCoord == yPos){
+                            System.out.println("That is the same position. Please choose another place to move to.");
+                            continue;
+                        }
+                        else{
+                            String location = "xCoord: " + xCoord + ",yCoord: " + yCoord;
+                            ChessPiece piece = board[xPos][yPos];
+                            ArrayList<String> moves = piece.checkMoves(); 
+                            if (moves.indexOf(location) != -1){
+                                if (board[xCoord][yCoord] != null){
+                                    whiteTook.add(board[xCoord][yCoord]);
+                                }
+                                board[xCoord][yCoord] = piece;
+                                piece.setX(xCoord);
+                                piece.setY(yCoord);
+                                board[xPos][yPos] = null;
+
+                                whiteTurn = false;
+
+                                if (board[xCoord][yCoord] instanceof Pawn){
+                                     if (yCoord == 0){
+                                        board[xCoord][yCoord].promotion();
+                                    } 
+                                        
+                                }
+
+                            for (ChessPiece tookPiece: whiteTook){
+                                if (tookPiece instanceof King){ 
+                                    ChessBoard.visualize(board);
+                                    System.out.println("Congratulations White. You are the winner!");
+                                    in.close();
+                                    Pawn.in.close();
+                                    System.exit(0);
+                                }
                             }
-                            else if (yCoord > 8 || yCoord < 0){
-                                System.out.println("The given Y Position is not within the bounds of the board. Please try again.");
-                                continue;
-                            }
-                            else if (xCoord == xPos && yCoord == yPos){
-                                System.out.println("That is the same position. Please choose another place to move to.");
-                                continue;
+
+                            ChessBoard.visualize(board);
+                            break;
                             }
                             else{
-                                String location = "xCoord: " + xCoord + ",yCoord: " + yCoord;
-                                ChessPiece piece = board[xPos][yPos];
-                                ArrayList<String> moves = piece.checkMoves(); 
-                                if (moves.indexOf(location) != -1){
-                                    if (board[xCoord][yCoord] != null){
-                                        whiteTook.add(board[xCoord][yCoord]);
-                                    }
-                                    board[xCoord][yCoord] = piece;
-                                    piece.setX(xCoord);
-                                    piece.setY(yCoord);
-                                    board[xPos][yPos] = null;
-
-                                    whiteTurn = false;
-
-                                    if (board[xCoord][yCoord] instanceof Pawn){
-                                        if (yCoord == 0){
-                                            board[xCoord][yCoord].promotion();
-                                        } 
-                                        
-                                    }
-
-                                    for (ChessPiece tookPiece: whiteTook){
-                                        if (tookPiece instanceof King){ 
-                                            ChessBoard.visualize(board);
-                                            System.out.println("Congratulations White. You are the winner!");
-                                            in.close();
-                                            Pawn.in.close();
-                                            System.exit(0);
-                                        }
-
-                                    }
-                                    ChessBoard.visualize(board);
-                                    break;
-                                }
-                                else{
-                                    System.out.println("That is not a possible move. Try turning on possible moves.");
+                                System.out.println("That is not a possible move. Try turning on possible moves.");
                                 }
                             }
                         }   
                     }
-                }
             }
-    
             while (!whiteTurn){ //black turn
                 System.out.println("It is Black's turn. Please select a piece you would like to move. Input as is follows: xCoord yCoord. Ex: 0 1");
-                if (!in.hasNextInt()){
+
+                int xPos;
+                int yPos;
+
+                try{
+                    xPos = in.nextInt();
+                    yPos = in.nextInt();
+                } catch (InputMismatchException x){
                     System.out.println("Input not recognized. Please try again.");
                     in.next();
                     continue;
                 }
-
-                int xPos = in.nextInt();
-                int yPos = in.nextInt();
 
                 if (xPos > 8 || xPos < 0){
                     System.out.println("X position is not within the bounds of the board. Choose a number from 0 to 7.");
@@ -211,71 +213,67 @@ public class Chess {
                             
                         int xCoord; 
                         int yCoord;
-                        
-                        if (!in.hasNextInt()){
-                            String input = in.next();
-                            if (input.equals("q")){
-                                break;
-                            }
-                            else{
-                                System.out.println("Input not recognized. Please try again.");
-                                in.next();
-                                continue;
-                            }
-                        }
-                        else{
+
+                        try{
                             xCoord = in.nextInt();
                             yCoord = in.nextInt();
-                            if (xCoord > 8 ||xCoord< 0){
-                                System.out.println("The given X Position is not within the bounds of the board. Please try again.");
-                                continue; 
-                            }
-                            else if (yCoord > 8 || yCoord < 0){
-                                System.out.println("The given Y Position is not within the bounds of the board. Please try again.");
-                                continue;
-                            }
-                            else if (xCoord == xPos && yCoord == yPos){
-                                System.out.println("That is the same position. Please choose another place to move to.");
-                                continue;
+                        } catch (InputMismatchException x){
+                            System.out.println("Input not recognized. Please try again.");
+                            in.next();
+                            continue;
+                        }
+                        
+                        
+                        if (xCoord > 8 ||xCoord< 0){
+                            System.out.println("The given X Position is not within the bounds of the board. Please try again.");
+                            continue; 
+                        }
+                        else if (yCoord > 8 || yCoord < 0){
+                            System.out.println("The given Y Position is not within the bounds of the board. Please try again.");
+                            continue;
+                        }
+                        else if (xCoord == xPos && yCoord == yPos){
+                            System.out.println("That is the same position. Please choose another place to move to.");
+                            continue;
+                        }
+                        else{
+                            String location = "xCoord: " + xCoord + ",yCoord: " + yCoord;
+                            ChessPiece piece = board[xPos][yPos];
+                            ArrayList<String> moves = piece.checkMoves(); 
+                            if (moves.indexOf(location) != -1){
+                                if (board[xCoord][yCoord] != null){
+                                    blackTook.add(board[xCoord][yCoord]);
+                                }
+                                board[xCoord][yCoord] = piece;
+                                piece.setX(xCoord);
+                                piece.setY(yCoord);
+                                board[xPos][yPos] = null;
+
+                                whiteTurn = true;
+
+                                if (board[xCoord][yCoord] instanceof Pawn){ 
+                                    if (yCoord == 7){
+                                        board[xCoord][yCoord].promotion();
+                                    }
+                                        
+                                }
+
+                                for (ChessPiece tookPiece: blackTook){
+                                    if (tookPiece instanceof King){ 
+                                        ChessBoard.visualize(board);
+                                        System.out.println("Congratulations Black. You are the winner!");
+                                        in.close();
+                                        Pawn.in.close();
+                                        System.exit(0);
+                                    }
+                                }
+
+                                ChessBoard.visualize(board);
+                                break;
+
                             }
                             else{
-                                String location = "xCoord: " + xCoord + ",yCoord: " + yCoord;
-                                ChessPiece piece = board[xPos][yPos];
-                                ArrayList<String> moves = piece.checkMoves(); 
-                                if (moves.indexOf(location) != -1){
-                                    if (board[xCoord][yCoord] != null){
-                                        blackTook.add(board[xCoord][yCoord]);
-                                    }
-                                    board[xCoord][yCoord] = piece;
-                                    piece.setX(xCoord);
-                                    piece.setY(yCoord);
-                                    board[xPos][yPos] = null;
-
-                                    whiteTurn = true;
-
-                                    if (board[xCoord][yCoord] instanceof Pawn){ 
-                                        if (yCoord == 7){
-                                            board[xCoord][yCoord].promotion();
-                                        }
-                                        
-                                    }
-
-                                    for (ChessPiece tookPiece: blackTook){
-                                        if (tookPiece instanceof King){ 
-                                            ChessBoard.visualize(board);
-                                            System.out.println("Congratulations Black. You are the winner!");
-                                            in.close();
-                                            Pawn.in.close();
-                                            System.exit(0);
-                                        }
-                                    }
-
-                                    ChessBoard.visualize(board);
-                                    break;
-                                }
-                                else{
-                                    System.out.println("That is not a possible move. Try turning on possible moves.");
-                                }
+                                System.out.println("That is not a possible move. Try turning on possible moves.");
                             }
                         }   
                     }
