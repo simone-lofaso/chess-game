@@ -162,9 +162,9 @@ public class Chess {
                             else{
                                 System.out.println("That is not a possible move. Try turning on possible moves.");
                                 }
-                            }
-                        }   
-                    }
+                        }
+                    }   
+                }
             }
             while (!whiteTurn){ //black turn
                 System.out.println("It is Black's turn. Please select a piece you would like to move. Input as is follows: xCoord yCoord. Ex: 0 1");
